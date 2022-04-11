@@ -1,0 +1,6 @@
+node_modules/
+.idea/
+dist/
+testServer/node_modules/
+combined.log
+error.log

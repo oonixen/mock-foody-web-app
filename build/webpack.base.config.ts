@@ -98,12 +98,6 @@ function returnServerLink(flag) {
     let answer = "";
 
     switch (flag) {
-        case "testServer":
-            answer = "https://polyana1c.ru:25404/DK_CRM/hs/data";
-            break;
-        case "stopLight":
-            answer = "https://stoplight.io/mocks/polyana/foody-api/41478668";
-            break;
         case "local":
             answer = "http://localhost:3001/DK_CRM/hs/data";
             break;

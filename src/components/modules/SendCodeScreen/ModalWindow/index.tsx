@@ -14,10 +14,10 @@ const ModalWindow = ({ close, next }) => {
     return (
         <form
             onSubmit={(e) => {
-                e.preventDefault();
-                setIsLoading(true)
+                // e.preventDefault();
+                // setIsLoading(true)
                 // sendPhone(phone)
-                // next();
+                next();
             }}
             className={styles.SendCodeScreen_ModalWindow__form}
         >
