@@ -1,0 +1,15 @@
+@import "src/styles/variables";
+
+.DishModalWindowScreen_DishInfoSubsection__DishInfoSubsection {
+  text-align: center;
+  font-size: px-to-rem(12);
+  padding: px-to-rem(11) px-to-rem(20);
+
+  &:not(:last-child) {
+    border-right: 1px solid $color--purpleDark;
+  }
+}
+
+.DishModalWindowScreen_DishInfoSubsection__DishInfoSubsectionAmount {
+  font-family: $font--numbers;
+}

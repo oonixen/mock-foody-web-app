@@ -1,0 +1,146 @@
+@import "src/styles/variables";
+@import "src/styles/functions/pxToRem";
+
+$block--height: calc(100vh - #{px-to-rem(60)});
+
+.MainPageBeforeAuthorizationScreen_Banner__bannerContainer {
+    height: $block--height;
+    min-height: px-to-rem(620);
+    display: flex;
+    flex-direction: row;
+}
+
+.MainPageBeforeAuthorizationScreen_Banner__bannerBlockContainer {
+    width: 50%;
+}
+
+.MainPageBeforeAuthorizationScreen_Banner__bannerTextBlock {
+    background-color: $color--purpleMedium;
+    padding-left: px-to-rem(139.53px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.MainPageBeforeAuthorizationScreen_Banner__bannerImgBlock {
+    display: block;
+}
+
+.MainPageBeforeAuthorizationScreen_Banner__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.MainPageBeforeAuthorizationScreen_Banner__foodyName {
+    width: px-to-rem(283.55px);
+    height: px-to-rem(105.77px);
+    margin-bottom: px-to-rem(60px);
+}
+
+.MainPageBeforeAuthorizationScreen_Banner__h1 {
+    width: px-to-rem(500px);
+    font-family: $font--text-bold;
+    font-size: px-to-rem(73.4837px);
+    color: $color--white;
+    line-height: px-to-rem(79px);
+}
+
+.MainPageBeforeAuthorizationScreen_Banner__span {
+    font-size: px-to-rem(32px);
+    background-color: $color--purpleDark;
+    padding: px-to-rem(14px) px-to-rem(24px);
+    border-radius: px-to-rem(42px);
+}
+
+.MainPageBeforeAuthorizationScreen_Banner__button {
+    margin-top: px-to-rem(40px);
+    background-color: $color--white;
+    padding: px-to-rem(30px) px-to-rem(80px);
+    width: px-to-rem(486px);
+    border-radius: px-to-rem(79px);
+    font-size: px-to-rem(32);
+    font-weight: bold;
+    color: $color--darkest;
+    transition: background-color;
+    transition-duration: 0.3s;
+
+    &:hover {
+        background-color: $color--lightestGrey;
+    }
+}
+
+@media (max-width: $width--laptop) {
+    .MainPageBeforeAuthorizationScreen_Banner__foodyName {
+        margin-bottom: px-to-rem(40px);
+    }
+
+    .MainPageBeforeAuthorizationScreen_Banner__h1 {
+        width: px-to-rem(400px);
+        font-size: px-to-rem(60px);
+    }
+
+    .MainPageBeforeAuthorizationScreen_Banner__span {
+        font-size: px-to-rem(26px);
+        padding: px-to-rem(10px) px-to-rem(16px);
+    }
+
+    .MainPageBeforeAuthorizationScreen_Banner__button {
+        font-size: px-to-rem(25);
+        padding: px-to-rem(30px) px-to-rem(40px);
+        margin-top: px-to-rem(30px);
+        width: px-to-rem(330px);
+    }
+}
+
+@media (max-width: $width--tablet) {
+    .MainPageBeforeAuthorizationScreen_Banner__bannerContainer {
+        min-height: auto;
+    }
+
+    .MainPageBeforeAuthorizationScreen_Banner__foodyName {
+        width: px-to-rem(200px);
+    }
+
+    .MainPageBeforeAuthorizationScreen_Banner__bannerTextBlock {
+        width: 100%;
+        padding-left: 21%;
+    }
+
+    .MainPageBeforeAuthorizationScreen_Banner__bannerImgBlock {
+        display: none;
+    }
+
+    .MainPageBeforeAuthorizationScreen_Banner__button {
+        width: px-to-rem(300);
+    }
+}
+
+@media (max-width: $width--phone) {
+    .MainPageBeforeAuthorizationScreen_Banner__bannerContainer {
+        height: $block--height;
+    }
+
+    .MainPageBeforeAuthorizationScreen_Banner__foodyName {
+        margin-bottom: px-to-rem(60px);
+    }
+
+    .MainPageBeforeAuthorizationScreen_Banner__h1 {
+        width: px-to-rem(200px);
+        font-size: px-to-rem(30px);
+        line-height: px-to-rem(48px);
+        font-family: $font--text-bold;
+    }
+
+    .MainPageBeforeAuthorizationScreen_Banner__span {
+        font-size: px-to-rem(15px);
+        padding: px-to-rem(10px) px-to-rem(16px);
+    }
+
+    .MainPageBeforeAuthorizationScreen_Banner__button {
+        font-size: px-to-rem(21);
+        padding: px-to-rem(15px) px-to-rem(20);
+        margin-top: px-to-rem(60px);
+        width: px-to-rem(210);
+    }
+}

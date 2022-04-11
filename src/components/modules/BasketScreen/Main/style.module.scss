@@ -1,0 +1,43 @@
+@import "src/styles/variables";
+
+$rightSection--height: px-to-rem(331);
+
+.BasketScreen_Main__main {
+    display: flex;
+    min-height: calc(100vh - #{$height--basketScreen_header_big});
+    margin-top: $height--basketScreen_header_big;
+}
+
+.BasketScreen_Main__leftSection {
+    width: 65%;
+    background-color: white;
+    margin-bottom: px-to-rem(42);
+}
+
+.BasketScreen_Main__rightSection {
+    width: 35%;
+    background-color: $color--lightGrey;
+}
+
+@media (max-width: $width--tablet) {
+    .BasketScreen_Main__leftSection {
+        width: 100%;
+        padding-bottom: $rightSection--height;
+    }
+
+    .BasketScreen_Main__rightSection {
+        z-index: 1;
+        width: 100%;
+        height: $rightSection--height;
+        position: fixed;
+        bottom: 0;
+        border-radius: px-to-rem(19) px-to-rem(19) 0 0;
+    }
+}
+
+@media (max-width: $width--phone) {
+    .BasketScreen_Main__main {
+        margin-top: $height--basketScreen_header_small;
+        min-height: calc(100vh - #{$height--basketScreen_header_small});
+    }
+}

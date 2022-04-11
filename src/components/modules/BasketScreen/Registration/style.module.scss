@@ -1,0 +1,115 @@
+@import "src/styles/variables";
+
+$img--height: px-to-rem(25);
+$arrow--width: px-to-rem(10);
+
+.BasketScreen_Registration__h2 {
+    margin-top: px-to-rem(39);
+    font-size: px-to-rem(35);
+    font-family: $font--text-bold;
+}
+
+.BasketScreen_Registration__topBlock {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: px-to-rem(36);
+}
+
+.BasketScreen_Registration__deliverSpan {
+    display: block;
+    font-size: px-to-rem(24);
+}
+
+.BasketScreen_Registration__promoButton {
+    display: none;
+    height: fit-content;
+    border: 1px solid $color--purpleMedium;
+    border-radius: px-to-rem(8);
+    font-size: px-to-rem(13);
+    color: $color--dark;
+    padding: px-to-rem(3) px-to-rem(12);
+}
+
+.BasketScreen_Registration__nav {
+    margin-top: px-to-rem(17);
+}
+
+.BasketScreen_Registration__NavLink {
+    display: flex;
+    padding: px-to-rem(16);
+
+    &:not(:last-child) {
+        border-bottom: 1px solid $color--darkestGrey;
+    }
+}
+
+.BasketScreen_Registration__infoBlock {
+    display: flex;
+    width: calc(100% - #{$arrow--width});
+    padding-right: px-to-rem(16);
+}
+
+.BasketScreen_Registration__img {
+    width: px-to-rem(31);
+    height: $img--height;
+    margin-right: px-to-rem(8);
+}
+
+.BasketScreen_Registration__valueText {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: px-to-rem(19);
+    color: $color--dark;
+}
+
+.BasketScreen_Registration__arrow {
+    height: $img--height;
+    width: $arrow--width;
+}
+
+.BasketScreen_Registration__promoInput {
+    width: 100%;
+    margin-top: px-to-rem(25);
+    color: $color--lightDark;
+    font-size: px-to-rem(20);
+    padding: px-to-rem(15) px-to-rem(0);
+    border-bottom: 1px solid $color--darkestGrey;
+    outline: none;
+}
+
+.BasketScreen_Registration__orderButton {
+    width: 100%;
+    margin-top: px-to-rem(50);
+    padding: px-to-rem(12) 0;
+}
+
+@media (max-width: $width--tablet) {
+    .BasketScreen_Registration__h2 {
+        display: none;
+    }
+
+    .BasketScreen_Registration__topBlock {
+        margin-top: px-to-rem(26);
+    }
+
+    .BasketScreen_Registration__promoButton {
+        display: block;
+    }
+
+    .BasketScreen_Registration__nav {
+        position: relative;
+        left: px-to-rem(-16);
+        width: 100vw;
+    }
+
+    .BasketScreen_Registration__promoInput {
+        display: none;
+    }
+
+    .BasketScreen_Registration__orderButton {
+        margin-top: px-to-rem(23);
+        margin-bottom: px-to-rem(16);
+        padding: px-to-rem(10) 0;
+    }
+}

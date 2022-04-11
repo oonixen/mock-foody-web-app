@@ -1,0 +1,50 @@
+@import "src/styles/variables";
+
+.ProfileScreen_Header__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: $height--profileScreen_header;
+    padding-bottom: px-to-rem(24);
+    padding-top: px-to-rem(24);
+    background-color: $color--white;
+    border-bottom: 2px solid $color--lightGrey;
+}
+
+.ProfileScreen_Header__nav {
+    display: flex;
+}
+
+.ProfileScreen_Header__backButton {
+    padding: px-to-rem(8) px-to-rem(16);
+    display: flex;
+    align-items: center;
+}
+
+.ProfileScreen_Header__backButtonContent {
+    display: flex;
+    align-items: center;
+}
+
+.ProfileScreen_Header__arrow {
+    width: px-to-rem(10);
+    height: px-to-rem(15);
+    margin-right: px-to-rem(6);
+    transform: rotate(180deg);
+}
+
+.ProfileScreen_Header__buttonText {
+    font-size: px-to-rem(16);
+}
+
+@media (max-width: $width--tablet) {
+    .ProfileScreen_Header__header {
+        height: $height--profileScreen_header_small;
+        padding-bottom: px-to-rem(10);
+        padding-top: px-to-rem(10);
+    }
+
+    .ProfileScreen_Header__nav {
+        display: none !important;
+    }
+}

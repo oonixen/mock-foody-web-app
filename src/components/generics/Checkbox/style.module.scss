@@ -1,0 +1,67 @@
+@import "src/styles/variables";
+@import "src/styles/functions/pxToRem";
+
+.Checkbox__container {
+    display: block;
+    position: relative;
+    padding-left: px-to-rem(48px);
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    &:hover .Checkbox__checkbox ~ .Checkbox__checkmark {
+        background-color: inherit;
+    }
+
+    & .Checkbox__checkbox:checked ~ .Checkbox__checkmark {
+        //background-color: #2196F3;
+    }
+
+    & .Checkbox__checkbox {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+    }
+
+    & .Checkbox__checkbox:checked ~ .Checkbox__checkmark:after {
+        display: block;
+    }
+
+    & .Checkbox__checkmark:after {
+        left: px-to-rem(7px);
+        top: px-to-rem(2px);
+        width: px-to-rem(11px);
+        height: px-to-rem(16px);
+        border: solid $color--purpleMedium;
+        border-width: 0 px-to-rem(3px) px-to-rem(3px) 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+}
+
+.Checkbox__checkbox {
+}
+
+.Checkbox__checkmark {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    height: px-to-rem(29px);
+    width: px-to-rem(29px);
+    background-color: inherit;
+    border-radius: px-to-rem(5px);
+    border: px-to-rem(2px) solid $color--purpleMedium;
+
+    &:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+}

@@ -1,0 +1,51 @@
+@import "src/styles/functions/pxToRem";
+@import "src/styles/variables";
+
+.DishCategoryScreen_DeliveryAddress__navLink {
+    height: px-to-rem(25);
+    display: flex;
+    justify-content: center;
+    margin-right: px-to-rem(16);
+}
+
+.DishCategoryScreen_DeliveryAddress__parentSpan {
+    max-width: px-to-rem(400);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-right: px-to-rem(4);
+}
+
+.DishCategoryScreen_DeliveryAddress__span {
+    font-size: px-to-rem(20);
+    white-space: nowrap;
+}
+
+.DishCategoryScreen_DeliveryAddress__span_1 {
+    color: $color--purpleMedium;
+    padding-right: px-to-rem(5);
+}
+
+.DishCategoryScreen_DeliveryAddress__span_2 {
+    color: $color--black;
+}
+
+.DishCategoryScreen_DeliveryAddress__svg {
+    display: inline-block;
+    width: px-to-rem(16);
+}
+
+@media (max-width: $width--laptop) {
+    .DishCategoryScreen_DeliveryAddress__span {
+        font-size: px-to-rem(16);
+    }
+
+    .DishCategoryScreen_DeliveryAddress__span_1 {
+        display: none;
+    }
+}
+
+@media (max-width: $width--phone) {
+    .DishCategoryScreen_DeliveryAddress__parentSpan {
+        max-width: px-to-rem(160);
+    }
+}

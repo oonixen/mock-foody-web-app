@@ -1,0 +1,39 @@
+@import "src/styles/variables";
+
+.ProfileNavSection__nav {
+    display: flex;
+}
+
+.ProfileNavSection__navButton {
+    display: flex;
+    align-items: center;
+    padding: px-to-rem(5) 0;
+    margin-right: px-to-rem(35);
+    color: $color--lightDark;
+}
+
+.ProfileNavSection__navButton_active {
+    color: $color--purpleMedium;
+}
+
+.ProfileNavSection__img {
+    height: px-to-rem(23);
+    width: px-to-rem(23);
+    margin-right: px-to-rem(8);
+}
+
+.ProfileNavSection__navButtonText {
+    font-size: px-to-rem(22);
+    font-weight: bold;
+}
+
+@media (max-width: $width--tablet) {
+    .ProfileNavSection__nav {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .ProfileNavSection__navButton {
+        margin-right: 0;
+    }
+}

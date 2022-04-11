@@ -1,0 +1,44 @@
+@import "src/styles/functions/pxToRem";
+@import "src/styles/variables";
+
+.PickupMapScreen_Map__block {
+    width: px-to-rem(569);
+    height: 100%;
+    padding: px-to-rem(44) 0 px-to-rem(44) px-to-rem(37);
+}
+
+.PickupMapScreen_Map__map {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: $color--grey;
+}
+
+.PickupMapScreen_Map__locationButton {
+    position: absolute;
+    right: px-to-rem(14);
+    bottom: px-to-rem(29);
+}
+
+.PickupMapScreen_Map__button {
+    display: none;
+    position: absolute;
+    right: px-to-rem(14);
+    top: px-to-rem(16);
+    padding: px-to-rem(2) px-to-rem(10);
+    background-color: white;
+    color: $color--purpleMedium;
+    border-radius: 5px;
+    border: 1px solid $color--purpleMedium;
+    box-shadow: 0 1.6212px 11.3484px rgba(112, 112, 112, 0.6);
+}
+
+@media (max-width: $width--phone) {
+    .PickupMapScreen_Map__block {
+        padding: px-to-rem(50) px-to-rem(37) px-to-rem(38);
+    }
+
+    .PickupMapScreen_Map__button {
+        display: block;
+    }
+}

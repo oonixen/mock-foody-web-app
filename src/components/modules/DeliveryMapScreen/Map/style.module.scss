@@ -1,0 +1,20 @@
+@import "src/styles/variables";
+@import "src/styles/functions/pxToRem";
+
+.DeliveryMapScreen_Map__block {
+    position: relative;
+    height: 75%;
+}
+
+.DeliveryMapScreen_Map__mapBlock {
+    width: 100%;
+    height: 100%;
+    background-color: $color--grey;
+    margin-top: px-to-rem(25px);
+}
+
+.DeliveryMapScreen_Map__button {
+    position: absolute;
+    right: px-to-rem(24);
+    bottom: px-to-rem(29);
+}

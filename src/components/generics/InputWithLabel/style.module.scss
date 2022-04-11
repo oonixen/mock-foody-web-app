@@ -1,0 +1,20 @@
+@import "src/styles/variables";
+
+.InputWithLabel__label {
+    display: block;
+}
+
+.InputWithLabel__span {
+    display: block;
+    margin-bottom: px-to-rem(6);
+    font-size: px-to-rem(20);
+    color: $color--lightDark;
+}
+
+.InputWithLabel__input {
+    width: 100%;
+    font-size: px-to-rem(20);
+    padding: px-to-rem(13) px-to-rem(31);
+    background-color: $color--lightestGrey;
+    border-radius: px-to-rem(43);
+}

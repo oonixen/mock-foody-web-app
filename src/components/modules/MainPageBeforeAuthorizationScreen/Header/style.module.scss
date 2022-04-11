@@ -1,0 +1,31 @@
+@import "src/styles/variables";
+@import "src/styles/functions/pxToRem";
+
+$rangeBetweenSvg: px-to-rem(21.75);
+
+.MainPageBeforeAuthorizationScreen_Header__header {
+    height: px-to-rem(60);
+    padding: px-to-rem(20.25) px-to-rem(0);
+    background-color: $color--lightestGrey;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.MainPageBeforeAuthorizationScreen_Header__textBlock {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    width: fit-content;
+}
+
+.MainPageBeforeAuthorizationScreen_Header__text {
+    color: $color--darkest;
+    font-size: px-to-rem(12.75);
+    font-weight: bold;
+}
+
+.MainPageBeforeAuthorizationScreen_Header__svg {
+    height: px-to-rem(21.07px);
+    width: px-to-rem(32px);
+    margin: 0 $rangeBetweenSvg;
+}

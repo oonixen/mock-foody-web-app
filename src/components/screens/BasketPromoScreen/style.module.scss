@@ -1,0 +1,27 @@
+@import "src/styles/variables";
+
+.BasketPromoScreen__block {
+  width: 95vw;
+  padding: px-to-rem(25) px-to-rem(16);
+  border-radius: px-to-rem(16);
+  background-color: $color--grey;
+}
+
+.BasketPromoScreen__text {
+  display: block;
+  font-size: px-to-rem(24);
+  margin-bottom: px-to-rem(24);
+}
+
+.BasketPromoScreen__input {
+  width: 100%;
+  margin-bottom: px-to-rem(34);
+  padding: px-to-rem(8) px-to-rem(16);
+  border-radius: px-to-rem(13);
+  background-color: $color--white;
+}
+
+.BasketPromoScreen__button {
+  width: 100%;
+  font-size: px-to-rem(16);
+}

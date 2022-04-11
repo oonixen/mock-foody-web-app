@@ -1,0 +1,165 @@
+@import "../../../styles/variables";
+
+.DishModalWindowScreen__section {
+    position: relative;
+    background-color: transparent;
+}
+
+.DishModalWindowScreen__presentButton {
+    z-index: 1;
+    position: absolute;
+    left: px-to-rem(-40);
+    top: px-to-rem(-25);
+    background-color: transparent;
+}
+
+.DishModalWindowScreen__presentSvg {
+    width: px-to-rem(159);
+    height: px-to-rem(89);
+}
+
+.DishModalWindowScreen__overflowBlock {
+    display: flex;
+    width: 80vw;
+    max-width: px-to-rem(1000);
+    height: 80vh;
+    overflow: auto;
+    border-radius: px-to-rem(32);
+    background-color: $color--white;
+}
+
+.DishModalWindowScreen__imgBlock {
+    position: relative;
+    width: 55%;
+    background-color: $color--purpleMedium;
+    border-radius: px-to-rem(32) 0 0 px-to-rem(32);
+}
+
+.DishModalWindowScreen__dishModalBlock {
+    position: absolute;
+    top: px-to-rem(15);
+    right: px-to-rem(15);
+    background-color: $color--purpleMedium;
+    color: $color--white;
+}
+
+.DishModalWindowScreen__dishInfoBlock_parent {
+    width: min-content;
+}
+
+.DishModalWindowScreen__dishInfoBlock {
+    display: flex;
+}
+
+.DishModalWindowScreen__dishAllergicBlock {
+    padding: px-to-rem(10) px-to-rem(19);
+    font-size: px-to-rem(14);
+}
+
+.DishModalWindowScreen__allergicName {
+    font-size: px-to-rem(16);
+}
+
+.DishModalWindowScreen__infoBlock {
+    position: relative;
+    width: 45%;
+    padding: 0 px-to-rem(2) px-to-rem(80) px-to-rem(52);
+}
+
+.DishModalWindowScreen__bottomBlock {
+    position: absolute;
+    bottom: px-to-rem(30);
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.DishModalWindowScreen__shadowBlock {
+    width: 100%;
+    height: px-to-rem(20);
+    background: rgb(255, 255, 255);
+    background: linear-gradient(
+        0deg,
+        rgba(255, 255, 255, 1) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+}
+
+.DishModalWindowScreen__addButton {
+    background-color: $color--purpleMedium;
+    color: white;
+    font-size: px-to-rem(20);
+    padding: px-to-rem(10) px-to-rem(40);
+
+    &:hover {
+        background-color: white;
+        color: $color--purpleMedium;
+    }
+}
+
+@media (max-width: $width--tablet) {
+
+    .DishModalWindowScreen__overflowBlock {
+        display: block;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    .DishModalWindowScreen__bottomBlock {
+        position: sticky;
+        bottom: 0;
+    }
+
+    .DishModalWindowScreen__addButton {
+        width: 90vw;
+        border-radius: 0;
+        padding: px-to-rem(15) px-to-rem(40);
+    }
+
+    .DishModalWindowScreen__shadowBlock {
+        display: none;
+    }
+
+    .DishModalWindowScreen__imgBlock {
+        width: 100%;
+        height: px-to-rem(300);
+        border-radius: px-to-rem(32) px-to-rem(32) 0 0;
+    }
+
+    .DishModalWindowScreen__infoBlock {
+        width: 100%;
+        padding-bottom: 0 !important;
+    }
+
+    .DishModalWindowScreen__dishModalBlock {
+        top: auto;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+}
+
+@media (max-width: $width--phone) {
+    .DishModalWindowScreen__overflowBlock {
+        width: 90vw;
+    }
+
+    .DishModalWindowScreen__presentButton {
+        left: px-to-rem(-25);
+    }
+
+    .DishModalWindowScreen__presentSvg {
+        width: px-to-rem(110);
+        height: px-to-rem(70);
+    }
+
+    .DishModalWindowScreen__imgBlock {
+        height: px-to-rem(150);
+    }
+
+    .DishModalWindowScreen__infoBlock {
+        padding: 0 px-to-rem(12) px-to-rem(80) px-to-rem(12);
+    }
+}

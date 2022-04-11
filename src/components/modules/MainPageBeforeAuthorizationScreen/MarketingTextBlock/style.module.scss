@@ -1,0 +1,57 @@
+@import "src/styles/variables";
+@import "src/styles/functions/pxToRem";
+
+.MainPageBeforeAuthorizationScreen_MarketingTextBlock__section {
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: px-to-rem(623.37px);
+    background-color: $color--lightestGrey;
+}
+
+.MainPageBeforeAuthorizationScreen_MarketingTextBlock__p {
+    font-weight: bold;
+    font-size: px-to-rem(49.4px);
+    line-height: px-to-rem(51.88px);
+    text-align: center;
+    max-width: px-to-rem(846.16px);
+    height: fit-content;
+    color: $color--purpleMedium;
+}
+
+.MainPageBeforeAuthorizationScreen_MarketingTextBlock__svg {
+    width: px-to-rem(190px);
+    height: px-to-rem(100px);
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+@media (max-width: $width--tablet) {
+    .MainPageBeforeAuthorizationScreen_MarketingTextBlock__section {
+        height: px-to-rem(570px);
+    }
+
+    .MainPageBeforeAuthorizationScreen_MarketingTextBlock__p {
+        font-size: px-to-rem(40px);
+        line-height: px-to-rem(40px);
+        max-width: px-to-rem(500px);
+    }
+
+    .MainPageBeforeAuthorizationScreen_MarketingTextBlock__svg {
+        height: px-to-rem(70px);
+    }
+}
+
+@media (max-width: $width--phone) {
+    .MainPageBeforeAuthorizationScreen_MarketingTextBlock__svg {
+    }
+
+    .MainPageBeforeAuthorizationScreen_MarketingTextBlock__p {
+        font-size: px-to-rem(30px);
+        line-height: px-to-rem(30px);
+        max-width: px-to-rem(300px);
+    }
+}

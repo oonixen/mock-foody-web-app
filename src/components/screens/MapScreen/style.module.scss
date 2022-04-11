@@ -1,0 +1,27 @@
+@import "src/styles/variables";
+
+.MapScreen__section {
+  position: relative;
+  width: px-to-rem(750px);
+  height: px-to-rem(500px);
+  border-radius: px-to-rem(29px);
+  background-color: $color--lightestGrey;
+}
+
+@media (max-width: $width--laptop) and (max-height: 690px) {
+  .MapScreen__section {
+    height: px-to-rem(400px);
+  }
+}
+
+@media (max-width: $width--tablet) {
+  .MapScreen__section {
+    width: 95vw;
+  }
+}
+
+@media (max-width: $width--phone) {
+  .MapScreen__section {
+    height: 70vh;
+  }
+}

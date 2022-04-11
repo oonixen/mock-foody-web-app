@@ -1,0 +1,155 @@
+@import "src/styles/variables";
+@import "src/styles/functions/pxToRem";
+
+.BasketScreen_Dishes__hideUnderTablet {
+}
+
+.BasketScreen_Dishes__sum {
+    display: block;
+    margin-top: px-to-rem(39);
+    font-size: px-to-rem(35);
+    color: $color--purpleMedium;
+}
+
+.BasketScreen_Dishes__dishSection {
+    margin-top: px-to-rem(40);
+}
+
+.BasketScreen_Dishes__dishBlock {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: px-to-rem(18) 0;
+    border-bottom: 1px solid $color--darkGrey;
+}
+
+.BasketScreen_Dishes__imgAndNameBlock {
+    width: 50%;
+    display: flex;
+    align-items: center;
+}
+
+.BasketScreen_Dishes__img {
+    min-width: px-to-rem(85);
+    height: px-to-rem(85);
+    background-color: $color--purpleMedium;
+    border-radius: px-to-rem(11);
+}
+
+.BasketScreen_Dishes__nameBlock {
+    width: 100%;
+    margin-left: px-to-rem(28);
+}
+
+.BasketScreen_Dishes__name {
+    display: block;
+    font-size: px-to-rem(18);
+    color: $color--dark;
+}
+
+.BasketScreen_Dishes__dishPrice {
+    display: block;
+    text-align: end;
+    width: px-to-rem(80);
+    font-size: px-to-rem(20);
+    color: $color--purpleMedium;
+}
+
+.BasketScreen_Dishes__dishPrice_alignStart {
+    text-align: start;
+}
+
+.BasketScreen_Dishes__controlBlockAndSumSection {
+    display: none;
+    justify-content: space-between;
+}
+
+.BasketScreen_Dishes__controlBlock {
+    display: flex;
+    align-items: center;
+}
+
+.BasketScreen_Dishes__button {
+    padding: px-to-rem(7) px-to-rem(10);
+    font-size: px-to-rem(30);
+    color: $color--white;
+    background-color: $color--purpleMedium;
+    border-radius: px-to-rem(44);
+    border: 1px solid $color--purpleMedium;
+
+    &:hover {
+        background-color: $color--purpleDark;
+    }
+}
+
+.BasketScreen_Dishes__svg {
+    width: px-to-rem(16);
+    height: px-to-rem(18);
+}
+
+.BasketScreen_Dishes__count {
+    display: block;
+    text-align: center;
+    width: px-to-rem(30);
+    font-size: px-to-rem(22);
+    color: $color--purpleMedium;
+    margin: 0 px-to-rem(16);
+}
+
+@media (max-width: $width--tablet) {
+    .BasketScreen_Dishes__hideUnderTablet {
+        display: none;
+    }
+
+    .BasketScreen_Dishes__sum {
+        display: none;
+    }
+
+    .BasketScreen_Dishes__dishSection {
+        margin-top: px-to-rem(32);
+    }
+
+    .BasketScreen_Dishes__dishBlock {
+        flex-direction: column;
+        padding: 0 0 px-to-rem(18) 0;
+
+        &:not(:first-child) {
+            padding: px-to-rem(18) 0;
+        }
+    }
+
+    .BasketScreen_Dishes__imgAndNameBlock {
+        width: 100%;
+    }
+
+    .BasketScreen_Dishes__img {
+        min-width: px-to-rem(74);
+        height: px-to-rem(74);
+    }
+
+    .BasketScreen_Dishes__nameBlock {
+        margin-left: px-to-rem(13);
+    }
+
+    .BasketScreen_Dishes__name {
+        margin-bottom: px-to-rem(27);
+        font-size: px-to-rem(15);
+    }
+
+    .BasketScreen_Dishes__controlBlockAndSumSection {
+        display: flex;
+    }
+
+    .BasketScreen_Dishes__count {
+        margin: 0 px-to-rem(8);
+    }
+
+    .BasketScreen_Dishes__button {
+        padding: px-to-rem(5) px-to-rem(8);
+    }
+
+    .BasketScreen_Dishes__svg {
+        width: px-to-rem(12);
+        height: px-to-rem(14);
+    }
+}

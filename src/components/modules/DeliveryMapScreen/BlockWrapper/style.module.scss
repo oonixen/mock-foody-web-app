@@ -1,0 +1,7 @@
+@import "src/styles/functions/pxToRem";
+
+.DeliveryMapScreen_BlockWrapper__block {
+    padding: px-to-rem(44.75px);
+    width: 100%;
+    height: 100%;
+}

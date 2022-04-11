@@ -1,0 +1,42 @@
+@import "../../../styles/variables";
+
+.CreateAddressWindowScreen__section {
+    width: px-to-rem(550);
+    padding: px-to-rem(39) px-to-rem(66);
+    background-color: $color--white;
+    border-radius: px-to-rem(32);
+}
+
+.CreateAddressWindowScreen__h1 {
+    margin-bottom: px-to-rem(25);
+    font-size: px-to-rem(37);
+    color: $color--purpleMedium;
+}
+
+.CreateAddressWindowScreen__inputBlockClassName {
+    margin-bottom: px-to-rem(20);
+}
+
+.CreateAddressWindowScreen__inputBlockClassName_last {
+    margin-bottom: px-to-rem(30);
+}
+
+.CreateAddressWindowScreen__inlineBlock {
+    display: flex;
+    gap: px-to-rem(20);
+}
+
+.CreateAddressWindowScreen__buttonBlock {
+    text-align: center;
+}
+
+.CreateAddressWindowScreen__button {
+    padding: px-to-rem(8) px-to-rem(64);
+}
+
+@media (max-width: $width--phone) {
+    .CreateAddressWindowScreen__section {
+        width: 90vw;
+        padding: px-to-rem(39) px-to-rem(33);
+    }
+}

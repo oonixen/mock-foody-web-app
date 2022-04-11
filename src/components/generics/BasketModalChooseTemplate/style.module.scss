@@ -1,0 +1,38 @@
+@import "src/styles/variables";
+
+.BasketModalChooseTemplate__section {
+    max-width: px-to-rem(600);
+    min-width: px-to-rem(600);
+    padding: px-to-rem(38) px-to-rem(68);
+    background-color: $color--white;
+    border-radius: px-to-rem(32);
+}
+
+.BasketModalChooseTemplate__h1 {
+    margin-bottom: px-to-rem(40);
+    font-size: px-to-rem(37);
+    color: $color--purpleMedium;
+}
+
+.BasketModalChooseTemplate__navLink {
+    margin-top: px-to-rem(50);
+    display: block;
+    text-align: center;
+}
+
+@media (max-width: $width--tablet) {
+    .BasketModalChooseTemplate__section {
+        min-width: 80vw;
+    }
+}
+
+@media (max-width: $width--phone) {
+    .BasketModalChooseTemplate__section {
+        min-width: 90vw;
+        padding: px-to-rem(35) px-to-rem(20);
+    }
+
+    .BasketModalChooseTemplate__h1 {
+        font-size: px-to-rem(30);
+    }
+}

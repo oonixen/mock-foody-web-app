@@ -1,0 +1,1245 @@
+openapi: 3.0.0
+info:
+  title: spaceship
+  version: "1.0"
+servers:
+- url: https://polyana1c.ru:25404/DK_CRM/hs/data/
+paths:
+  /auth/send-code:
+    post:
+      description: Отправка кода подтверждения на номер телефона
+      operationId: auth-send-code
+      requestBody:
+        content:
+          application/json:
+            examples: {}
+            schema:
+              $ref: '#/components/schemas/AuthSendCodeRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthSendCodeResponse'
+          description: OK
+        "400":
+          description: Bad Request
+      summary: Auth Send Code
+      tags:
+      - auth
+      x-internal: true
+      x-eov-operation-handler: controllers/AuthController
+  /auth/code-verify:
+    post:
+      description: Проверка кода отправленного на телефон
+      operationId: auth-code-verify
+      requestBody:
+        content:
+          application/json:
+            examples: {}
+            schema:
+              $ref: '#/components/schemas/AuthCodeVerifyRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthToken'
+          description: OK
+        "400":
+          description: Bad Request
+      summary: Auth Code Verify
+      tags:
+      - auth
+      x-eov-operation-handler: controllers/AuthController
+  /auth/social:
+    post:
+      description: |-
+        Авторизация через социальные сервисы.
+        Для авторизации потребуется указать тип провайдера, например vk и прислать токен, который отдает тот или иной сервис
+      operationId: auth-social
+      requestBody:
+        content:
+          application/json:
+            examples: {}
+            schema:
+              $ref: '#/components/schemas/AuthCodeVerifyRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthToken'
+          description: OK
+        "400":
+          description: Bad Request
+      summary: Auth Social
+      tags:
+      - auth
+      x-eov-operation-handler: controllers/AuthController
+  /auth/refresh-token:
+    post:
+      description: Обновление токена после невалидности основного
+      operationId: auth-refresh-token
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthRefreshTokenRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthToken'
+          description: OK
+        "400":
+          description: Bad Request
+      summary: Auth Refresh Token
+      tags:
+      - auth
+      x-eov-operation-handler: controllers/AuthController
+  /address/suggest:
+    post:
+      operationId: address-suggest
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetAddressSuggestRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAddressSuggestResponse'
+          description: OK
+      summary: Address suggest
+      tags:
+      - address
+      x-eov-operation-handler: controllers/AddressController
+  /address/pickup:
+    get:
+      operationId: pickup-addresses
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAddressesPickupResponse'
+          description: OK
+      summary: Pickup addresses
+      tags:
+      - address
+      x-eov-operation-handler: controllers/AddressController
+  /address/verify:
+    post:
+      operationId: address-verify
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddressVerifyRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddressVerifyResponse'
+          description: OK
+      summary: Address Verify
+      tags:
+      - address
+      x-eov-operation-handler: controllers/AddressController
+  /user:
+    get:
+      operationId: get-current-user
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: OK
+        "401":
+          description: Unauthorized
+      summary: Get current user
+      tags:
+      - user
+      x-eov-operation-handler: controllers/UserController
+    patch:
+      operationId: update-user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateUserRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: OK
+        "401":
+          description: Unauthorized
+      summary: Update current user
+      tags:
+      - user
+      x-eov-operation-handler: controllers/UserController
+  /user/addresses:
+    get:
+      operationId: get-user-addresses
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetUserAddressesResponse'
+          description: OK
+        "401":
+          description: Unauthorized
+      summary: User addresses
+      tags:
+      - user
+      x-eov-operation-handler: controllers/UserController
+    post:
+      operationId: create-user-address
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateUserAddressRequest'
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserAddress'
+          description: Created
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+      summary: Create user address
+      tags:
+      - user
+      x-eov-operation-handler: controllers/UserController
+  /user/addresses/{addressId}:
+    delete:
+      operationId: remove-user-address
+      parameters:
+      - explode: false
+        in: path
+        name: addressId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RemoveUserAddressResponse'
+          description: OK
+        "401":
+          description: Unauthorized
+      summary: Remove user address
+      tags:
+      - user
+      x-eov-operation-handler: controllers/UserController
+    get:
+      operationId: get-user-address
+      parameters:
+      - explode: false
+        in: path
+        name: addressId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserAddress'
+          description: OK
+        "401":
+          description: Unauthorized
+      summary: Get user address
+      tags:
+      - user
+      x-eov-operation-handler: controllers/UserController
+    patch:
+      operationId: update-user-address
+      parameters:
+      - explode: false
+        in: path
+        name: addressId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateUserAddressRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserAddress'
+          description: OK
+        "401":
+          description: Unauthorized
+      summary: Update user address
+      tags:
+      - user
+      x-eov-operation-handler: controllers/UserController
+  /products/main:
+    get:
+      operationId: get-products-main
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetProductsMainResponse'
+          description: OK
+      summary: Get Products Main
+      tags:
+      - products
+      x-eov-operation-handler: controllers/ProductsController
+  /products/extra:
+    get:
+      operationId: get-products-extra
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetProductsExtraResponse'
+          description: OK
+        "401":
+          description: Unauthorized
+      summary: Get Products Extra
+      tags:
+      - products
+      x-eov-operation-handler: controllers/ProductsController
+  /products/category/{categoryId}:
+    get:
+      operationId: get-products-category
+      parameters:
+      - explode: false
+        in: path
+        name: categoryId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductsCategory'
+          description: OK
+      summary: Get category detail
+      tags:
+      - products
+      x-eov-operation-handler: controllers/ProductsController
+components:
+  examples: {}
+  requestBodies: {}
+  responses: {}
+  schemas:
+    DeliveryTypeEnum:
+      enum:
+      - courier
+      - self
+      title: DeliveryTypeEnum
+      type: string
+    GetAddressSuggestRequest:
+      example:
+        address: address
+      properties:
+        address:
+          type: string
+      required:
+      - address
+      title: GetAddressSuggestRequest
+      type: object
+    GetAddressSuggestResponse:
+      items:
+        type: string
+      title: GetAddressSuggestResponse
+      type: array
+    AddressVerifyRequest:
+      example:
+        address: address
+      properties:
+        address:
+          type: string
+      required:
+      - address
+      title: AddressVerifyRequest
+      type: object
+    AddressVerifyResponse:
+      title: AddressVerifyResponse
+      type: boolean
+    AddressPickup:
+      example:
+        badge: badge
+        address: address
+        location:
+          latitude: latitude
+          longitude: longitude
+        id: id
+      properties:
+        id:
+          type: string
+        address:
+          type: string
+        badge:
+          type: string
+        location:
+          $ref: '#/components/schemas/Location'
+      required:
+      - address
+      - id
+      - location
+      title: AddressPickup
+      type: object
+      x-tags:
+      - address
+    GetAddressesPickupResponse:
+      items:
+        $ref: '#/components/schemas/AddressPickup'
+      title: GetAddressesPickupResponse
+      type: array
+    Location:
+      example:
+        latitude: latitude
+        longitude: longitude
+      properties:
+        latitude:
+          type: string
+        longitude:
+          type: string
+      required:
+      - latitude
+      - longitude
+      title: Location
+      type: object
+    AuthRefreshTokenRequest:
+      example:
+        refresh: refresh
+      properties:
+        refresh:
+          type: string
+      required:
+      - refresh
+      title: AuthRefreshTokenRequest
+      type: object
+    AuthCodeVerifyRequest:
+      example:
+        phoneNumber: phoneNumber
+        code: code
+      properties:
+        phoneNumber:
+          type: string
+        code:
+          type: string
+      required:
+      - code
+      - phoneNumber
+      title: AuthCodeVerifyRequest
+      type: object
+      x-tags:
+      - auth
+    AuthSendCodeRequest:
+      example:
+        phoneNumber: +79171234567
+      properties:
+        phoneNumber:
+          example: +79171234567
+          format: phoneNumber
+          minLength: 1
+          type: string
+      required:
+      - phoneNumber
+      title: AuthSendCodeRequest
+      type: object
+      x-tags:
+      - auth
+    AuthSendCodeResponse:
+      example:
+        expirationDateTime: 2000-01-23T04:56:07.000+00:00
+      properties:
+        expirationDateTime:
+          format: date-time
+          type: string
+      required:
+      - expirationDateTime
+      title: AuthSendCodeResponse
+      type: object
+      x-examples:
+        example-1:
+          expirationDateTime: 2019-08-24T14:15:22Z
+      x-tags:
+      - auth
+    AuthToken:
+      example:
+        access: access
+        refresh: refresh
+      properties:
+        access:
+          type: string
+        refresh:
+          type: string
+      required:
+      - access
+      - refresh
+      title: AuthToken
+      type: object
+    FoodEnergy:
+      example:
+        carbohydrates: 5.962133916683182
+        proteins: 1.4658129805029452
+        fat: 6.027456183070403
+        calories: 5.637376656633329
+      properties:
+        fat:
+          description: жиры
+          type: number
+        proteins:
+          description: белки
+          type: number
+        carbohydrates:
+          description: углеводы
+          type: number
+        calories:
+          description: калории
+          type: number
+      title: FoodEnergy
+      type: object
+      x-tags:
+      - products
+    FoodInfo:
+      example:
+        foodEnergy:
+          carbohydrates: 5.962133916683182
+          proteins: 1.4658129805029452
+          fat: 6.027456183070403
+          calories: 5.637376656633329
+        allergens:
+        - allergens
+        - allergens
+      properties:
+        allergens:
+          items:
+            type: string
+          type: array
+        foodEnergy:
+          $ref: '#/components/schemas/FoodEnergy'
+        size:
+          $ref: '#/components/schemas/ProductSize'
+      title: FoodInfo
+      type: object
+    Product:
+      example:
+        images:
+        - images
+        - images
+        foodInfo:
+          foodEnergy:
+            carbohydrates: 5.962133916683182
+            proteins: 1.4658129805029452
+            fat: 6.027456183070403
+            calories: 5.637376656633329
+          allergens:
+          - allergens
+          - allergens
+        price: 0.8008281904610115
+        name: name
+        description: description
+        id: id
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        price:
+          type: number
+        images:
+          items:
+            type: string
+          type: array
+        description:
+          type: string
+        foodInfo:
+          $ref: '#/components/schemas/FoodInfo'
+      required:
+      - foodInfo
+      - id
+      - images
+      - name
+      - price
+      title: Product
+      type: object
+      x-tags:
+      - products
+    ProductSize:
+      oneOf:
+      - $ref: '#/components/schemas/Weight'
+      - $ref: '#/components/schemas/Volume'
+      title: ProductSize
+    ProductsCategory:
+      example:
+        isAvailable: true
+        id: id
+        title: title
+        availableDateTime: 2000-01-23T04:56:07.000+00:00
+        products:
+        - images:
+          - images
+          - images
+          foodInfo:
+            foodEnergy:
+              carbohydrates: 5.962133916683182
+              proteins: 1.4658129805029452
+              fat: 6.027456183070403
+              calories: 5.637376656633329
+            allergens:
+            - allergens
+            - allergens
+          price: 0.8008281904610115
+          name: name
+          description: description
+          id: id
+        - images:
+          - images
+          - images
+          foodInfo:
+            foodEnergy:
+              carbohydrates: 5.962133916683182
+              proteins: 1.4658129805029452
+              fat: 6.027456183070403
+              calories: 5.637376656633329
+            allergens:
+            - allergens
+            - allergens
+          price: 0.8008281904610115
+          name: name
+          description: description
+          id: id
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        products:
+          items:
+            $ref: '#/components/schemas/Product'
+          type: array
+        isAvailable:
+          type: boolean
+        availableDateTime:
+          description: Время активациии категории
+          format: date-time
+          type: string
+      required:
+      - id
+      - isAvailable
+      - products
+      - title
+      type: object
+      x-tags:
+      - products
+    ProductsCategoryPreview:
+      example:
+        isAvailable: true
+        id: id
+        title: title
+        availableDateTime: 2000-01-23T04:56:07.000+00:00
+        products:
+        - images:
+          - images
+          - images
+          foodInfo:
+            foodEnergy:
+              carbohydrates: 5.962133916683182
+              proteins: 1.4658129805029452
+              fat: 6.027456183070403
+              calories: 5.637376656633329
+            allergens:
+            - allergens
+            - allergens
+          price: 0.8008281904610115
+          name: name
+          description: description
+          id: id
+        - images:
+          - images
+          - images
+          foodInfo:
+            foodEnergy:
+              carbohydrates: 5.962133916683182
+              proteins: 1.4658129805029452
+              fat: 6.027456183070403
+              calories: 5.637376656633329
+            allergens:
+            - allergens
+            - allergens
+          price: 0.8008281904610115
+          name: name
+          description: description
+          id: id
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        products:
+          items:
+            $ref: '#/components/schemas/Product'
+          type: array
+        isAvailable:
+          type: boolean
+        availableDateTime:
+          description: Время активациии категории
+          format: date-time
+          type: string
+      required:
+      - id
+      - isAvailable
+      - products
+      - title
+      type: object
+      x-tags:
+      - products
+    ProductsList:
+      items:
+        $ref: '#/components/schemas/Product'
+      type: array
+    GetProductsMainResponse:
+      example:
+        categories:
+        - isAvailable: true
+          id: id
+          title: title
+          availableDateTime: 2000-01-23T04:56:07.000+00:00
+          products:
+          - images:
+            - images
+            - images
+            foodInfo:
+              foodEnergy:
+                carbohydrates: 5.962133916683182
+                proteins: 1.4658129805029452
+                fat: 6.027456183070403
+                calories: 5.637376656633329
+              allergens:
+              - allergens
+              - allergens
+            price: 0.8008281904610115
+            name: name
+            description: description
+            id: id
+          - images:
+            - images
+            - images
+            foodInfo:
+              foodEnergy:
+                carbohydrates: 5.962133916683182
+                proteins: 1.4658129805029452
+                fat: 6.027456183070403
+                calories: 5.637376656633329
+              allergens:
+              - allergens
+              - allergens
+            price: 0.8008281904610115
+            name: name
+            description: description
+            id: id
+        - isAvailable: true
+          id: id
+          title: title
+          availableDateTime: 2000-01-23T04:56:07.000+00:00
+          products:
+          - images:
+            - images
+            - images
+            foodInfo:
+              foodEnergy:
+                carbohydrates: 5.962133916683182
+                proteins: 1.4658129805029452
+                fat: 6.027456183070403
+                calories: 5.637376656633329
+              allergens:
+              - allergens
+              - allergens
+            price: 0.8008281904610115
+            name: name
+            description: description
+            id: id
+          - images:
+            - images
+            - images
+            foodInfo:
+              foodEnergy:
+                carbohydrates: 5.962133916683182
+                proteins: 1.4658129805029452
+                fat: 6.027456183070403
+                calories: 5.637376656633329
+              allergens:
+              - allergens
+              - allergens
+            price: 0.8008281904610115
+            name: name
+            description: description
+            id: id
+      properties:
+        categories:
+          items:
+            $ref: '#/components/schemas/ProductsCategoryPreview'
+          type: array
+      title: GetProductsMainResponse
+      type: object
+    ProductsExtra:
+      example:
+        expirationDateTime: 2000-01-23T04:56:07.000+00:00
+        images:
+        - images
+        - images
+        description: description
+        id: id
+        title: title
+        products:
+        - images:
+          - images
+          - images
+          foodInfo:
+            foodEnergy:
+              carbohydrates: 5.962133916683182
+              proteins: 1.4658129805029452
+              fat: 6.027456183070403
+              calories: 5.637376656633329
+            allergens:
+            - allergens
+            - allergens
+          price: 0.8008281904610115
+          name: name
+          description: description
+          id: id
+        - images:
+          - images
+          - images
+          foodInfo:
+            foodEnergy:
+              carbohydrates: 5.962133916683182
+              proteins: 1.4658129805029452
+              fat: 6.027456183070403
+              calories: 5.637376656633329
+            allergens:
+            - allergens
+            - allergens
+          price: 0.8008281904610115
+          name: name
+          description: description
+          id: id
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        products:
+          items:
+            $ref: '#/components/schemas/Product'
+          type: array
+        expirationDateTime:
+          format: date-time
+          type: string
+        images:
+          items:
+            type: string
+          type: array
+      required:
+      - id
+      - images
+      - products
+      - title
+      title: ProductExtra
+      type: object
+    GetProductsExtraResponse:
+      example:
+        productsExtra:
+        - expirationDateTime: 2000-01-23T04:56:07.000+00:00
+          images:
+          - images
+          - images
+          description: description
+          id: id
+          title: title
+          products:
+          - images:
+            - images
+            - images
+            foodInfo:
+              foodEnergy:
+                carbohydrates: 5.962133916683182
+                proteins: 1.4658129805029452
+                fat: 6.027456183070403
+                calories: 5.637376656633329
+              allergens:
+              - allergens
+              - allergens
+            price: 0.8008281904610115
+            name: name
+            description: description
+            id: id
+          - images:
+            - images
+            - images
+            foodInfo:
+              foodEnergy:
+                carbohydrates: 5.962133916683182
+                proteins: 1.4658129805029452
+                fat: 6.027456183070403
+                calories: 5.637376656633329
+              allergens:
+              - allergens
+              - allergens
+            price: 0.8008281904610115
+            name: name
+            description: description
+            id: id
+        - expirationDateTime: 2000-01-23T04:56:07.000+00:00
+          images:
+          - images
+          - images
+          description: description
+          id: id
+          title: title
+          products:
+          - images:
+            - images
+            - images
+            foodInfo:
+              foodEnergy:
+                carbohydrates: 5.962133916683182
+                proteins: 1.4658129805029452
+                fat: 6.027456183070403
+                calories: 5.637376656633329
+              allergens:
+              - allergens
+              - allergens
+            price: 0.8008281904610115
+            name: name
+            description: description
+            id: id
+          - images:
+            - images
+            - images
+            foodInfo:
+              foodEnergy:
+                carbohydrates: 5.962133916683182
+                proteins: 1.4658129805029452
+                fat: 6.027456183070403
+                calories: 5.637376656633329
+              allergens:
+              - allergens
+              - allergens
+            price: 0.8008281904610115
+            name: name
+            description: description
+            id: id
+      properties:
+        productsExtra:
+          items:
+            $ref: '#/components/schemas/ProductsExtra'
+          type: array
+      required:
+      - productsExtra
+      title: GetProductsExtraResponse
+      type: object
+    Volume:
+      properties:
+        value:
+          type: number
+        unit:
+          $ref: '#/components/schemas/VolumeUnitEnum'
+      required:
+      - unit
+      - value
+      type: object
+    VolumeUnitEnum:
+      enum:
+      - l
+      - ml
+      type: string
+    Weight:
+      properties:
+        value:
+          type: number
+        unit:
+          $ref: '#/components/schemas/WeightUnitEnum'
+      required:
+      - unit
+      - value
+      type: object
+    WeightUnitEnum:
+      enum:
+      - g
+      - kg
+      type: string
+    User:
+      example:
+        birthday: 2000-01-23T04:56:07.000+00:00
+        firstName: firstName
+        hasKids: true
+        phoneNumber: phoneNumber
+        id: id
+        email: email
+      properties:
+        id:
+          type: string
+        firstName:
+          type: string
+        birthday:
+          format: date-time
+          type: string
+        email:
+          format: email
+          type: string
+        gender:
+          $ref: '#/components/schemas/UserGenderEnum'
+        hasKids:
+          type: boolean
+        phoneNumber:
+          type: string
+      required:
+      - id
+      - phoneNumber
+      title: User
+      type: object
+      x-tags:
+      - user
+      x-examples: {}
+    UserAddress:
+      example:
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        courierComment: courierComment
+        address: address
+        name: name
+        id: id
+        entrance: entrance
+        floor: 0.8008281904610115
+        apartmentNumber: apartmentNumber
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        address:
+          type: string
+        entrance:
+          type: string
+        floor:
+          type: number
+        apartmentNumber:
+          type: string
+        courierComment:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - address
+      - createdAt
+      - id
+      - name
+      - updatedAt
+      type: object
+      x-examples:
+        example-1:
+          id: string
+          name: string
+          address: string
+          entrance: string
+          floor: 0
+          apartmentNumber: string
+          courierComment: string
+          createdAt: 2019-08-24T14:15:22Z
+          updatedAt: 2019-08-24T14:15:22Z
+    UserGenderEnum:
+      enum:
+      - man
+      - women
+      title: UserGenderEnum
+      type: string
+      x-tags:
+      - user
+    CreateUserAddressRequest:
+      example:
+        courierComment: courierComment
+        address: address
+        name: name
+        entrance: entrance
+        floor: 0.8008281904610115
+        apartmentNumber: apartmentNumber
+      properties:
+        name:
+          minLength: 1
+          type: string
+        address:
+          minLength: 1
+          type: string
+        entrance:
+          minLength: 1
+          type: string
+        floor:
+          type: number
+        apartmentNumber:
+          minLength: 1
+          type: string
+        courierComment:
+          minLength: 1
+          type: string
+      required:
+      - address
+      - name
+      type: object
+      x-examples:
+        example-1:
+          id: string
+          name: string
+          address: string
+          entrance: string
+          floor: 0
+          apartmentNumber: string
+          courierComment: string
+          createdAt: 2019-08-24T14:15:22Z
+          updatedAt: 2019-08-24T14:15:22Z
+    GetUserAddressesResponse:
+      example:
+        addresses:
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          courierComment: courierComment
+          address: address
+          name: name
+          id: id
+          entrance: entrance
+          floor: 0.8008281904610115
+          apartmentNumber: apartmentNumber
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          courierComment: courierComment
+          address: address
+          name: name
+          id: id
+          entrance: entrance
+          floor: 0.8008281904610115
+          apartmentNumber: apartmentNumber
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        lastSelectedAddressId: lastSelectedAddressId
+      properties:
+        addresses:
+          items:
+            $ref: '#/components/schemas/UserAddress'
+          type: array
+        lastSelectedAddressId:
+          type: string
+      required:
+      - addresses
+      title: GetAddressesResponse
+      type: object
+    RemoveUserAddressResponse:
+      example:
+        id: id
+      properties:
+        id:
+          type: string
+      required:
+      - id
+      title: RemoveUserAddressResponse
+      type: object
+    UpdateUserRequest:
+      example:
+        birthday: birthday
+        firstName: firstName
+        hasKids: true
+        id: id
+        email: email
+      properties:
+        id:
+          type: string
+        firstName:
+          type: string
+        birthday:
+          type: string
+        email:
+          type: string
+        gender:
+          $ref: '#/components/schemas/UserGenderEnum'
+        hasKids:
+          type: boolean
+      type: object
+      x-examples:
+        example-1:
+          id: string
+          firstName: string
+          birthday: 2019-08-24T14:15:22Z
+          email: user@example.com
+          gender: man
+          hasKids: true
+          phoneNumber: string
+    UpdateUserAddressRequest:
+      example:
+        courierComment: courierComment
+        address: address
+        name: name
+        entrance: entrance
+        floor: 0.8008281904610115
+        apartmentNumber: apartmentNumber
+      properties:
+        name:
+          minLength: 1
+          type: string
+        address:
+          minLength: 1
+          type: string
+        entrance:
+          minLength: 1
+          type: string
+        floor:
+          type: number
+        apartmentNumber:
+          minLength: 1
+          type: string
+        courierComment:
+          minLength: 1
+          type: string
+      type: object
+      x-examples:
+        example-1:
+          id: string
+          name: string
+          address: string
+          entrance: string
+          floor: 0
+          apartmentNumber: string
+          courierComment: string
+          createdAt: 2019-08-24T14:15:22Z
+          updatedAt: 2019-08-24T14:15:22Z
+  securitySchemes: {}

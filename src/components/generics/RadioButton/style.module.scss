@@ -1,0 +1,33 @@
+@import "src/styles/variables";
+
+.RadioButton__label {
+    display: flex;
+
+    border-bottom: 1px solid $color--darkestGrey;
+    margin-right: px-to-rem(14);
+    padding: px-to-rem(20) px-to-rem(6);
+
+    &:not(:first-child) {
+        margin-top: px-to-rem(19);
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.RadioButton__input {
+    margin-left: px-to-rem(12);
+    margin-right: px-to-rem(21);
+
+    &[type="radio"] {
+        width: px-to-rem(20);
+        height: px-to-rem(20);
+        accent-color: $color--purpleMedium;
+    }
+}
+
+.RadioButton__span {
+    font-size: px-to-rem(22);
+    color: $color--dark;
+}

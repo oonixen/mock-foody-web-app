@@ -1,0 +1,51 @@
+@import "src/styles/functions/pxToRem";
+@import "src/styles/variables";
+
+.DishModalWindowScreen_InfoBlock__block {
+    height: 100%;
+    overflow: auto;
+    padding: px-to-rem(23) px-to-rem(50) px-to-rem(50) 0;
+}
+
+.DishModalWindowScreen_InfoBlock__infoBlock {
+    display: flex;
+}
+
+.DishModalWindowScreen_InfoBlock__infoButton {
+    background-color: $color--purpleMedium;
+    width: px-to-rem(41);
+    height: px-to-rem(39);
+    padding: px-to-rem(7);
+    border-radius: px-to-rem(21);
+}
+
+.DishModalWindowScreen_InfoBlock__allergicButton {
+    width: px-to-rem(110);
+    margin-left: px-to-rem(11);
+    border-radius: px-to-rem(21);
+    color: $color--white;
+    background-color: $color--purpleMedium;
+    font-size: px-to-rem(13);
+}
+
+.DishModalWindowScreen_InfoBlock__name {
+    margin-top: px-to-rem(15);
+    font-family: $font--text-bold;
+    font-size: px-to-rem(30);
+}
+
+.DishModalWindowScreen_InfoBlock__weight {
+    font-family: $font--numbers;
+    font-size: px-to-rem(20);
+}
+
+.DishModalWindowScreen_InfoBlock__description {
+    margin-top: px-to-rem(21);
+    font-size: px-to-rem(18);
+}
+
+@media (max-width: $width--phone) {
+    .DishModalWindowScreen_InfoBlock__block {
+        padding-right: 0;
+    }
+}

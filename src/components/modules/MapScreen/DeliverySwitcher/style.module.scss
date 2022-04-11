@@ -1,0 +1,83 @@
+@import "src/styles/variables";
+@import "src/styles/functions/pxToRem";
+
+$button--width: px-to-rem(273px);
+$button--height: px-to-rem(62px);
+
+.MapScreen_DeliverySwitcher__nav {
+    z-index: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: px-to-rem(-55px);
+    width: px-to-rem(559px);
+    height: px-to-rem(72px);
+    background-color: $color--lightestGrey;
+    border-radius: px-to-rem(51px);
+    box-shadow: 0 3.66764px 13.7537px rgba(0, 0, 0, 0.25);
+}
+
+.MapScreen_DeliverySwitcher__li {
+}
+
+.MapScreen_DeliverySwitcher__a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: $button--width;
+    height: $button--height;
+    font-size: px-to-rem(30px);
+    color: $color--lightDark;
+    transition: color ease-in-out 0.3s;
+
+    &.active {
+        color: $color--white;
+    }
+}
+
+.MapScreen_DeliverySwitcher__animateBlock {
+    z-index: -1;
+    position: absolute;
+    background-color: $color--purpleMedium;
+    border-radius: px-to-rem(51px);
+    width: $button--width;
+    height: $button--height;
+    transition: transform ease-in-out 0.3s;
+    -webkit-transition: transform ease-in-out 0.3s;
+}
+
+.MapScreen_DeliverySwitcher__animateBlock_left {
+    transform: translateX(0);
+}
+
+.MapScreen_DeliverySwitcher__animateBlock_right {
+    transform: translateX($button--width);
+}
+
+@media (max-width: $width--tablet) {
+    .MapScreen_DeliverySwitcher__nav {
+        top: px-to-rem(-32px);
+        width: px-to-rem(260px);
+        height: px-to-rem(60px);
+    }
+
+    .MapScreen_DeliverySwitcher__a {
+        font-size: px-to-rem(18);
+        width: px-to-rem(125);
+        height: px-to-rem(50);
+    }
+
+    .MapScreen_DeliverySwitcher__animateBlock {
+        width: px-to-rem(125);
+        height: px-to-rem(50);
+    }
+
+    .MapScreen_DeliverySwitcher__animateBlock_right {
+        transform: translateX(px-to-rem(125));
+    }
+}

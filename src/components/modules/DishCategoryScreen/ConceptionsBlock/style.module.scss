@@ -1,0 +1,198 @@
+@import "src/styles/variables";
+@import "src/styles/functions/pxToRem";
+
+.DishCategoryScreen_ConceptionsBlock__categoryWrapper {
+    display: flex;
+    margin-top: px-to-rem(72);
+}
+
+.DishCategoryScreen_ConceptionsBlock__categoryBlock {
+    z-index: 1;
+}
+
+.DishCategoryScreen_ConceptionsBlock__topCategoryBlock {
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: px-to-rem(17);
+}
+
+.DishCategoryScreen_ConceptionsBlock__topCategoryName {
+    font-size: px-to-rem(28);
+}
+
+.DishCategoryScreen_ConceptionsBlock__topNavLink {
+    border: 1px solid $color--purpleMedium;
+    font-size: px-to-rem(16);
+    color: $color--purpleMedium;
+    border-radius: px-to-rem(12);
+    padding: px-to-rem(2) px-to-rem(14);
+}
+
+.DishCategoryScreen_ConceptionsBlock__topArrow {
+    display: inline-block;
+    width: px-to-rem(12);
+    filter: invert(32%) sepia(67%) saturate(2454%) hue-rotate(243deg)
+        brightness(93%) contrast(85%);
+}
+
+.DishCategoryScreen_ConceptionsBlock__dishesBlock {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: px-to-rem(970);
+    box-shadow: 0 4px 31px rgba(176, 176, 176, 0.25);
+    border-radius: px-to-rem(17);
+    background-color: $color--white;
+}
+
+.DishCategoryScreen_ConceptionsBlock__dishBlock {
+    position: relative;
+    padding: px-to-rem(40) px-to-rem(20) 0;
+
+    &:not(:last-child) {
+        border-right: 1px solid $color--grey;
+    }
+}
+
+.DishCategoryScreen_ConceptionsBlock__img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1;
+    background-color: $color--purpleMedium;
+    border-radius: px-to-rem(13);
+}
+
+.DishCategoryScreen_ConceptionsBlock__dishInfoBlock {
+    margin: 0 10%;
+}
+
+.DishCategoryScreen_ConceptionsBlock__name {
+    margin-top: px-to-rem(20);
+    color: $color--black;
+    font-size: px-to-rem(22);
+    margin-bottom: calc(#{px-to-rem(65)} + #{px-to-rem(24)});
+}
+
+.DishCategoryScreen_ConceptionsBlock__addDishButton {
+    position: absolute;
+    bottom: px-to-rem(24);
+    font-size: px-to-rem(22) !important;
+}
+
+.DishCategoryScreen_ConceptionsBlock__navLink {
+    position: relative;
+    width: px-to-rem(300);
+    height: px-to-rem(361);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: $color--purpleLight;
+    top: 0;
+    right: px-to-rem(30px);
+    border-radius: 0 px-to-rem(17) px-to-rem(17) 0;
+    color: $color--black;
+    margin-left: px-to-rem(15);
+    padding: px-to-rem(30) px-to-rem(15px) px-to-rem(60) px-to-rem(50px);
+}
+
+.DishCategoryScreen_ConceptionsBlock__categoryName {
+    font-family: $font--text-bold;
+    font-size: px-to-rem(50);
+    word-break: break-all;
+}
+
+.DishCategoryScreen_ConceptionsBlock__arrowBlock {
+    display: flex;
+}
+
+.DishCategoryScreen_ConceptionsBlock__arrowText {
+    font-size: px-to-rem(50);
+}
+
+.DishCategoryScreen_ConceptionsBlock__arrowImg {
+    margin-left: px-to-rem(15);
+    width: px-to-rem(41);
+}
+
+@media (max-width: $width--laptop) {
+    .DishCategoryScreen_ConceptionsBlock__dishesBlock {
+        width: px-to-rem(800);
+    }
+
+    .DishCategoryScreen_ConceptionsBlock__navLink {
+        width: px-to-rem(250);
+        height: px-to-rem(311);
+    }
+
+    .DishCategoryScreen_ConceptionsBlock__categoryName {
+        font-size: px-to-rem(40);
+    }
+
+    .DishCategoryScreen_ConceptionsBlock__arrowText {
+        font-size: px-to-rem(40);
+    }
+}
+
+@media (max-width: $width--tablet) {
+    .DishCategoryScreen_ConceptionsBlock__categoryWrapper {
+        margin-top: px-to-rem(40);
+    }
+
+    .DishCategoryScreen_ConceptionsBlock__topCategoryBlock {
+        display: flex;
+    }
+
+    .DishCategoryScreen_ConceptionsBlock__dishesBlock {
+        box-shadow: none;
+        background-color: inherit;
+        width: 100%;
+        column-gap: px-to-rem(13);
+    }
+
+    .DishCategoryScreen_ConceptionsBlock__navLink {
+        display: none;
+    }
+
+    .DishCategoryScreen_ConceptionsBlock__dishBlock {
+        padding: 0;
+
+        &:not(:last-child) {
+            border-right: none;
+        }
+    }
+
+    .DishCategoryScreen_ConceptionsBlock__dishInfoBlock {
+        margin: 0;
+    }
+
+    .DishCategoryScreen_ConceptionsBlock__name {
+        margin-top: px-to-rem(8);
+        margin-bottom: calc(#{px-to-rem(50)} + #{px-to-rem(12)});
+        font-size: px-to-rem(20);
+        color: $color--dark;
+    }
+
+    .DishCategoryScreen_ConceptionsBlock__addDishButton {
+        font-size: px-to-rem(20) !important;
+        padding: px-to-rem(8) px-to-rem(20) !important;
+        bottom: px-to-rem(12);
+    }
+}
+
+@media (max-width: $width--phone) {
+    .DishCategoryScreen_ConceptionsBlock__categoryWrapper {
+        margin-top: px-to-rem(32);
+    }
+
+    .DishCategoryScreen_ConceptionsBlock__name {
+        margin-top: px-to-rem(8);
+        margin-bottom: calc(#{px-to-rem(35)} + #{px-to-rem(12)});
+        font-size: px-to-rem(13);
+    }
+
+    .DishCategoryScreen_ConceptionsBlock__addDishButton {
+        font-size: px-to-rem(14) !important;
+        padding: px-to-rem(4) px-to-rem(10) !important;
+        bottom: px-to-rem(12);
+    }
+}

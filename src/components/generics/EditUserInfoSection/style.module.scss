@@ -1,0 +1,48 @@
+@import "src/styles/variables";
+
+.EditProfile__input {
+    max-width: px-to-rem(343);
+    background-color: $color--white;
+}
+
+.EditProfile__blockInput {
+    margin-top: px-to-rem(18);
+}
+
+.EditProfile__labeledBlock {
+    margin-top: px-to-rem(25);
+}
+
+.EditProfile__labeledBlockSpan {
+    display: block;
+    margin-bottom: px-to-rem(8);
+    font-size: px-to-rem(20);
+    color: $color--lightDark;
+}
+
+.EditProfile__inputRadio {
+    width: px-to-rem(16);
+    height: px-to-rem(16);
+    accent-color: $color--purpleMedium;
+}
+
+.EditProfile__genderLabel {
+    font-size: px-to-rem(20);
+    margin-right: px-to-rem(16);
+}
+
+.EditProfile__exitBlock {
+    display: flex;
+    justify-content: center;
+    margin-top: px-to-rem(24);
+}
+
+.EditProfile__exitButton {
+    font-size: px-to-rem(16);
+}
+
+@media (max-width: $width--tablet) {
+    .EditProfile__input {
+        border: 1px solid $color--darkestGrey;
+    }
+}

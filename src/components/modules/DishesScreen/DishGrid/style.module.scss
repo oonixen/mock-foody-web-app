@@ -1,0 +1,58 @@
+@import "src/styles/functions/pxToRem";
+@import "src/styles/variables";
+
+.DishesScreen_DishGrid__section {
+    &:not(:first-child) {
+        margin-top: px-to-rem(40);
+    }
+}
+
+.DishesScreen_DishGrid__h4 {
+    font-size: px-to-rem(30);
+    margin-bottom: px-to-rem(20);
+}
+
+.DishesScreen_DishGrid__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: px-to-rem(25);
+    grid-row-gap: px-to-rem(45);
+}
+
+.DishesScreen_DishGrid__dishBlock {
+    position: relative;
+}
+
+.DishesScreen_DishGrid__img {
+    aspect-ratio: 1.1;
+    background-color: $color--purpleMedium;
+    border-radius: px-to-rem(28);
+}
+
+.DishesScreen_DishGrid__p {
+    margin-top: px-to-rem(20);
+    margin-bottom: px-to-rem(50);
+    font-size: px-to-rem(23);
+}
+
+.DishesScreen_DishGrid__button {
+    position: absolute;
+    bottom: 0;
+    font-size: px-to-rem(18);
+}
+
+@media (max-width: $width--tablet) {
+    .DishesScreen_DishGrid__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .DishesScreen_DishGrid__p {
+        font-size: px-to-rem(20);
+    }
+}
+
+@media (max-width: $width--phone) {
+    .DishesScreen_DishGrid__p {
+        font-size: px-to-rem(14);
+    }
+}

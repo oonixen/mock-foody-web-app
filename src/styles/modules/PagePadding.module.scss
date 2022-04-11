@@ -1,0 +1,21 @@
+@import "src/styles/functions/pxToRem";
+@import "src/styles/variables";
+
+.PagePadding_horizontal {
+    padding-left: $indent--4x;
+    padding-right: $indent--4x;
+}
+
+@media (max-width: $width--laptop) {
+    .PagePadding_horizontal {
+        padding-left: $indent--2x;
+        padding-right: $indent--2x;
+    }
+}
+
+@media (max-width: $width--tablet) {
+    .PagePadding_horizontal {
+        padding-left: $indent--sm;
+        padding-right: $indent--sm;
+    }
+}

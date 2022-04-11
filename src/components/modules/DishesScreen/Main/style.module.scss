@@ -1,0 +1,7 @@
+@import "src/styles/functions/pxToRem";
+@import "src/styles/variables";
+
+.DishesScreen_Main__main {
+    margin-top: $height--dishesScreen_header;
+    margin-bottom: px-to-rem(50);
+}

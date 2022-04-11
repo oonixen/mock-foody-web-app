@@ -1,0 +1,109 @@
+@import "src/styles/functions/pxToRem";
+@import "src/styles/variables";
+
+@mixin borderLink() {
+    border: 1px solid $color--purpleMedium;
+    border-radius: px-to-rem(8);
+    margin-right: px-to-rem(13);
+}
+
+.DishesScreen_Main__block {
+    padding: px-to-rem(32) 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.DishesScreen_Main__sortBlockLeftBlock {
+    @include borderLink();
+    display: none;
+}
+
+.DishesScreen_Main__sortBlockRightBlock {
+    display: block;
+}
+
+.DishesScreen_Main__navLink {
+    display: inline-block;
+    margin: px-to-rem(5) 0;
+    padding: px-to-rem(5) px-to-rem(22);
+    font-size: px-to-rem(20);
+    color: $color--purpleMedium;
+
+    &:not(:last-child) {
+        border-right: 1px solid $color--grey;
+    }
+
+    &:hover {
+        color: $color--purpleDark;
+    }
+}
+
+.DishesScreen_Main__sortBlock {
+    position: relative;
+    font-size: px-to-rem(20);
+}
+
+.DishesScreen_Main__button {
+    width: max-content;
+    padding: px-to-rem(5) px-to-rem(22);
+    color: $color--purpleMedium;
+
+    &:hover {
+        color: $color--purpleDark;
+    }
+}
+
+.DishesScreen_Main__arrow {
+    position: relative;
+    top: px-to-rem(1);
+    display: inline-block;
+    width: px-to-rem(7);
+    height: px-to-rem(13);
+    margin-left: px-to-rem(8);
+    transform: rotate(90deg);
+}
+
+.DishesScreen_Main__hiddenBlock {
+    z-index: 1;
+    display: none;
+    position: absolute;
+    right: 0;
+    min-width: 100%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
+    border-radius: px-to-rem(11);
+    background-color: $color--white;
+}
+
+.DishesScreen_Main__hiddenNavLink {
+    display: block;
+    text-align: center;
+    color: $color--purpleMedium;
+    padding: px-to-rem(10) px-to-rem(15);
+
+    &:hover {
+        color: $color--purpleDark;
+    }
+}
+
+@media (max-width: $width--tablet) {
+    .DishesScreen_Main__navLink {
+        @include borderLink();
+        font-size: px-to-rem(16);
+
+        &:not(:last-child) {
+            border-right: 1px solid $color--purpleMedium;
+        }
+    }
+
+    .DishesScreen_Main__sortBlockLeftBlock {
+        display: inline-block;
+    }
+
+    .DishesScreen_Main__sortBlockRightBlock {
+        display: none;
+    }
+
+    .DishesScreen_Main__sortBlock {
+        font-size: px-to-rem(16);
+    }
+}

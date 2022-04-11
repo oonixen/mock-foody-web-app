@@ -1,0 +1,4 @@
+additionalProperties:
+    useSingleRequestParameter: false
+    enumPropertyNaming: UPPERCASE
+    serverPort: 3001

@@ -1,0 +1,80 @@
+@import "src/styles/functions/pxToRem";
+@import "src/styles/variables";
+
+.DeliveryMapScreen_AddressSelector__block_parent {
+    height: 20%;
+    display: flex;
+    align-items: center;
+}
+
+.DeliveryMapScreen_AddressSelector__block_child {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.DeliveryMapScreen_AddressSelector__input {
+    background-color: inherit;
+    height: px-to-rem(48px);
+    width: px-to-rem(400px);
+    color: $color--purpleMedium;
+    font-size: px-to-rem(30px);
+    border-bottom: px-to-rem(2px) solid $color--darkestGrey;
+
+    &:focus-visible {
+        outline: none;
+    }
+
+    &::placeholder {
+        color: $color--purpleMedium;
+    }
+}
+
+.DeliveryMapScreen_AddressSelector__button {
+    margin-left: px-to-rem(11px);
+    width: px-to-rem(128px);
+    font-size: px-to-rem(20px);
+}
+
+.DeliveryMapScreen_AddressSelector__buttonSuggestion_top {
+    font-size: px-to-rem(20px);
+    color: $color--purpleMedium;
+}
+
+.DeliveryMapScreen_AddressSelector__buttonSuggestion_bottom {
+    font-size: px-to-rem(15px);
+    color: $color--lightDark;
+}
+
+.DeliveryMapScreen_AddressSelector__span {
+    height: px-to-rem(15);
+    font-size: px-to-rem(15);
+    color: $color--lightDark;
+    margin-top: px-to-rem(8);
+}
+
+@media (max-width: $width--phone) {
+    .DeliveryMapScreen_AddressSelector__input {
+        width: 100%;
+        height: px-to-rem(40px);
+        font-size: px-to-rem(15px);
+    }
+
+    .DeliveryMapScreen_AddressSelector__button {
+        font-size: px-to-rem(15px);
+    }
+
+    .DeliveryMapScreen_AddressSelector__span {
+        height: px-to-rem(10);
+        font-size: px-to-rem(10);
+    }
+
+    .DeliveryMapScreen_AddressSelector__buttonSuggestion_top {
+        font-size: px-to-rem(15px);
+    }
+
+    .DeliveryMapScreen_AddressSelector__buttonSuggestion_bottom {
+        font-size: px-to-rem(10px);
+    }
+}

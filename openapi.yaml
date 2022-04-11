@@ -1,0 +1,1735 @@
+openapi: 3.0.0
+info:
+    title: spaceship
+    version: '1.0'
+servers:
+    - url: 'https://polyana1c.ru:25404/dev_foody/hs/data/'
+paths:
+    /auth/send-code:
+        post:
+            summary: Auth Send Code
+            operationId: auth-send-code
+            responses:
+                '200':
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/AuthSendCodeResponse'
+                            examples:
+                                example-1:
+                                    value:
+                                        expirationDateTime: '2022-03-11T15:00:00Z'
+                '400':
+                    description: Bad Request
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/AuthSendCodeRequest'
+                        examples: {}
+            x-internal: false
+            tags:
+                - auth
+            description: Отправка кода подтверждения на номер телефона
+    /auth/code-verify:
+        post:
+            summary: Auth Code Verify
+            operationId: auth-code-verify
+            responses:
+                '200':
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/AuthToken'
+                '400':
+                    description: Bad Request
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/AuthCodeVerifyRequest'
+                        examples: {}
+            tags:
+                - auth
+            description: Проверка кода отправленного на телефон
+    /auth/social:
+        post:
+            summary: Auth Social
+            operationId: auth-social
+            responses:
+                '200':
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/AuthToken'
+                '400':
+                    description: Bad Request
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/AuthSocialRequest'
+                        examples: {}
+            tags:
+                - auth
+            description: >-
+                Авторизация через социальные сервисы.
+                
+                Для авторизации потребуется указать тип провайдера, например vk и
+                прислать токен, который отдает тот или иной сервис
+    /auth/refresh-token:
+        post:
+            summary: Auth Refresh Token
+            operationId: auth-refresh-token
+            responses:
+                '200':
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/AuthToken'
+                '400':
+                    description: Bad Request
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/AuthRefreshTokenRequest'
+            description: Обновление токена после невалидности основного
+            tags:
+                - auth
+    /auth/push-notifications-subscribe:
+        post:
+            summary: Push Notifications Subscribe
+            tags:
+                - auth
+            responses:
+                '200':
+                    description: OK
+            operationId: push-notifications-subscribe
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/PushNotificationsSubscribeRequest'
+        parameters: []
+    /auth/push-notifications-unsubscribe:
+        post:
+            summary: Push Notifications Unsubscribe
+            tags:
+                - auth
+            responses:
+                '200':
+                    description: OK
+            operationId: get-auth-push-notifications-unsubscribe
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/PushNotificationsUnsubscribeRequest'
+    /address/suggest:
+        post:
+            summary: Address suggest
+            operationId: address-suggest
+            responses:
+                '200':
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/AddressSuggestResponse'
+                            examples:
+                                example-1:
+                                    value:
+                                        - address: 'Мичурина, 48'
+                                          addressFull: 'Самара, Мичурина 48'
+                                          location:
+                                              latitude: 53.20134
+                                              longitude: 50.13398
+                                        - address: 'Мичурина, 50'
+                                          addressFull: 'Самара, Мичурина 50'
+                                          location:
+                                              latitude: 53.20186
+                                              longitude: 50.13566
+                                        - address: 'Мичурина, 56'
+                                          addressFull: 'Самара, Мичурина 56'
+                                          location:
+                                              latitude: 53.20831
+                                              longitude: 50.14977
+            tags:
+                - address
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/AddressSuggestRequest'
+                        examples: {}
+        parameters: []
+    /address/pickup:
+        get:
+            summary: Pickup addresses
+            operationId: get-address-pickup-list
+            responses:
+                '200':
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/GetAddressPickupListResponse'
+                            examples:
+                                example-1:
+                                    value:
+                                        - id: string
+                                          address: 'Максима Горького, 131'
+                                          location:
+                                              latitude: 53.19417
+                                              longitude: 50.0887
+                                        - id: '2'
+                                          address: 'Льва Толстого, 22'
+                                          badge: рекомендуем
+                                          location:
+                                              latitude: 53.192584
+                                              longitude: 50.093683
+                                        - id: '3'
+                                          address: 'Ленинградская, 17'
+                                          location:
+                                              latitude: 53.188347
+                                              longitude: 50.08681
+                                        - id: '4'
+                                          address: 'Максима Горького, 119'
+                                          badge: скидка 10%
+                                          location:
+                                              latitude: 53.191136
+                                              longitude: 50.085549
+            tags:
+                - address
+        parameters: []
+    /user:
+        get:
+            summary: Get current user
+            tags:
+                - user
+            responses:
+                '200':
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/User'
+                            examples:
+                                example-1:
+                                    value:
+                                        phoneNumber: '+79178139988'
+                '401':
+                    description: Unauthorized
+            operationId: get-current-user
+        patch:
+            summary: Update current user
+            operationId: update-user
+            responses:
+                '200':
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/User'
+                '401':
+                    description: Unauthorized
+            tags:
+                - user
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/UpdateUserRequest'
+    /user/addresses:
+        get:
+            summary: User addresses
+            tags:
+                - user
+            responses:
+                '200':
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/GetUserAddressListResponse'
+                            examples:
+                                example-1:
+                                    value:
+                                        - id: asdasd-12
+                                          name: Дом
+                                          address: Мичурина 48
+                                          createdAt: '2019-08-24T14:15:22Z'
+                                          updatedAt: '2019-08-24T14:15:22Z'
+                                          location:
+                                              longitude: 53.193046
+                                              latitude: 50.091507
+                                        - id: asdasd-13
+                                          name: Работа
+                                          address: Садовая 22
+                                          createdAt: '2019-08-24T14:15:22Z'
+                                          updatedAt: '2019-08-24T14:15:22Z'
+                                          location:
+                                              longitude: 53.190591
+                                              latitude: 50.085811
+                '401':
+                    description: Unauthorized
+            operationId: get-user-address-list
+        parameters: []
+        post:
+            summary: Create user address
+            operationId: create-user-address
+            responses:
+                '201':
+                    description: Created
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/UserAddress'
+                            examples:
+                                example-1:
+                                    value:
+                                        id: asdasd-15
+                                        name: Секрет
+                                        address: Мичурина 42
+                                        createdAt: '2019-08-24T14:15:22Z'
+                                        updatedAt: '2019-08-24T14:15:22Z'
+                                        location:
+                                            longitude: 12312
+                                            latitude: 123123
+                '400':
+                    description: Bad Request
+                '401':
+                    description: Unauthorized
+            tags:
+                - user
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/CreateUserAddressRequest'
+    '/user/addresses/{addressId}':
+        parameters:
+            - schema:
+                  type: string
+              name: addressId
+              in: path
+              required: true
+        patch:
+            summary: Update user address
+            operationId: update-user-address
+            responses:
+                '200':
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/UserAddress'
+                            examples:
+                                example-1:
+                                    value:
+                                        id: asdasd-12
+                                        name: Дом
+                                        address: Мичурина 48
+                                        floor: 5
+                                        apartmentNumber: '132'
+                                        createdAt: '2019-08-24T14:15:22Z'
+                                        updatedAt: '2019-08-24T18:15:22Z'
+                                        location:
+                                            longitude: 123123
+                                            latitude: 123123
+                '401':
+                    description: Unauthorized
+            tags:
+                - user
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/UpdateUserAddressRequest'
+        delete:
+            summary: Remove user address
+            operationId: remove-user-address
+            responses:
+                '200':
+                    description: OK
+                '401':
+                    description: Unauthorized
+            tags:
+                - user
+        get:
+            summary: Get user address
+            operationId: get-user-address
+            responses:
+                '200':
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/UserAddress'
+                '401':
+                    description: Unauthorized
+            tags:
+                - user
+    /user/preferences:
+        get:
+            summary: User Preferences
+            tags:
+                - user
+            responses:
+                '200':
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/UserPreferences'
+            operationId: get-user-preferences
+        patch:
+            summary: ''
+            operationId: update-user-preferences
+            responses:
+                '200':
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/UserPreferences'
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/UpdateUserPreferencesRequest'
+            tags:
+                - user
+    /user/orders:
+        get:
+            summary: User Order List
+            tags:
+                - user
+            responses:
+                '200':
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/GetUserOrderListResponse'
+                            examples:
+                                example-1:
+                                    value:
+                                        - id: '143'
+                                          price: 1200
+                                          products:
+                                              - id: sasat
+                                                name: Пицца Микс
+                                                image: >-
+                                                    https://e0.edimdoma.ru/data/posts/0002/1429/21429-ed4_wide.jpg?1628275808
+                                                quantity: 1
+                                                price: 300
+                                                amount: 300
+                                              - id: sasat-2
+                                                name: Пицца Сикс
+                                                image: >-
+                                                    https://km-doma.ru/assets/gallery_thumbnails/31/319484a4bb725e4eacab62c7f0c7f1ed.jpg
+                                                quantity: 2
+                                                price: 300
+                                                amount: 600
+                                              - id: sasat-3
+                                                name: Пицца Трикс
+                                                image: >-
+                                                    https://www.maggi.ru/data/images/recept/img640x618/recept_3585_j66m.jpg
+                                                quantity: 1
+                                                price: 300
+                                                amount: 300
+                                          createdAt: '2022-02-21T14:35:59Z'
+                                          dateFinish: '2022-02-21T15:35:59Z'
+                                          deliveryType: courier
+                                        - id: '164'
+                                          price: 300
+                                          products:
+                                              - id: mini
+                                                name: Пицца Мини
+                                                image: string
+                                                quantity: 3
+                                                price: 100
+                                                amount: 300
+                                          createdAt: '2022-02-21T14:35:59Z'
+                                          dateFinish: '2022-02-21T16:35:59Z'
+                                          deliveryType: self
+            operationId: get-user-order-list
+    /products/main:
+        post:
+            summary: Get Products Main
+            tags:
+                - products
+            responses:
+                '200':
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/GetProductCategoryListMainResponse'
+                            examples:
+                                example-1:
+                                    value:
+                                        - id: c0049f52-5641-4378-9028-43d3d17b1c33
+                                          title: Пицца
+                                          products:
+                                              - id: d588b70b-4e97-4d26-8966-8f5acd914f56
+                                                name: Пицца микс
+                                                price: 399
+                                                image: >-
+                                                    https://www.citypizza.ru/upload/img/shop/pizza/BORT/%D0%BC%D0%B8%D0%BA%D1%81-%D0%B1%D0%BE%D1%80%D1%82.jpg
+                                                description: >-
+                                                    Пицца с сырокопчеными колбасками пепперони,
+                                                    помидорами, маслинами, сушеными базиликом и орегано,
+                                                    каперсами, сыром моцарелла и томатным соусом
+                                                    помадоро с чесноком и красным перцем.
+                                                foodInfo:
+                                                    allergens:
+                                                        - каперсы
+                                                        - сыр моцарелла
+                                                        - красный перец
+                                                    ingredients:
+                                                        - каперсы
+                                                        - сыр моцарелла
+                                                        - красный перец
+                                                    foodEnergy:
+                                                        fat: 12.4
+                                                        proteins: 10.7
+                                                        carbohydrates: 25.5
+                                                        calories: 267
+                                                    size:
+                                                        value: 300
+                                                        unit: g
+                                                additionalProducts:
+                                                    - id: ff4eca3e-af91-44e4-a320-2ef304e2390d
+                                                      name: Шампиньоны
+                                                      price: 59
+                                                    - id: 5a5bb02d-24a3-448c-8646-46b818d7850f
+                                                      name: Острый халапеньо
+                                                      price: 89
+                                                    - id: d14e2e99-8dce-4fb3-8495-6b59d045fc3f
+                                                      name: Ветчина
+                                                      price: 89
+                                              - id: 7679045c-dd00-4666-9bd4-c36033377897
+                                                name: Пицца Диабло
+                                                price: 399
+                                                image: >-
+                                                    https://makemos.ru/upload/thumbs/catalog/medium/picca-s-anchousami_094ddb.png
+                                                description: >-
+                                                    Пицца с сырокопчеными колбасками пепперони,
+                                                    помидорами, маслинами, сушеными базиликом и орегано,
+                                                    каперсами, сыром моцарелла и томатным соусом
+                                                    помадоро с чесноком и красным перцем.
+                                                foodInfo:
+                                                    allergens:
+                                                        - каперсы
+                                                        - сыр моцарелла
+                                                        - красный перец
+                                                    foodEnergy:
+                                                        fat: 12.4
+                                                        proteins: 10.7
+                                                        carbohydrates: 25.5
+                                                        calories: 267
+                                                    size:
+                                                        value: 300
+                                                        unit: g
+                                              - id: 55e9b28e-86a2-4d55-814d-e470c912defe
+                                                name: Пицца Аррива
+                                                price: 399
+                                                image: >-
+                                                    https://livestarsclub.ru/wp-content/uploads/2020/05/%D0%9F%D0%B8%D1%86%D1%86%D0%B0-el-diablo-1200x1200.jpg
+                                                description: >-
+                                                    Пицца с сырокопчеными колбасками пепперони,
+                                                    помидорами, маслинами, сушеными базиликом и орегано,
+                                                    каперсами, сыром моцарелла и томатным соусом
+                                                    помадоро с чесноком и красным перцем.
+                                                foodInfo:
+                                                    allergens:
+                                                        - каперсы
+                                                        - сыр моцарелла
+                                                        - красный перец
+                                                    foodEnergy:
+                                                        fat: 12.4
+                                                        proteins: 10.7
+                                                        carbohydrates: 25.5
+                                                        calories: 267
+                                                    size:
+                                                        value: 300
+                                                        unit: g
+                                          isAvailable: true
+                                        - id: 1d6b5112-5fbc-4b99-8943-746c117f6997
+                                          title: Супы
+                                          products:
+                                              - id: 6ff81e41-4e94-4d80-a605-959e7a793750
+                                                name: Spaghetti Squash Soup with Sausage
+                                                price: 270
+                                                image: 'https://i.ibb.co/ZXYY30n/image-1.jpg'
+                                                foodInfo:
+                                                    allergens:
+                                                        - каперсы
+                                                        - сыр моцарелла
+                                                        - красный перец
+                                                    foodEnergy:
+                                                        fat: 12.4
+                                                        proteins: 10.7
+                                                        carbohydrates: 25.5
+                                                        calories: 267
+                                                    size:
+                                                        value: 300
+                                                        unit: g
+                                              - id: be2f73c5-077c-4691-af76-d7d661034ec9
+                                                name: 'Butternut Squash, Tomato, Chard & Chickpea Soup'
+                                                price: 310
+                                                image: 'https://i.ibb.co/QDJpWgB/image-2.jpg'
+                                                foodInfo:
+                                                    allergens:
+                                                        - каперсы
+                                                        - сыр моцарелла
+                                                        - красный перец
+                                                    foodEnergy:
+                                                        fat: 12.4
+                                                        proteins: 10.7
+                                                        carbohydrates: 25.5
+                                                        calories: 267
+                                                    size:
+                                                        value: 300
+                                                        unit: g
+                                              - id: 4c0ffa61-40f4-43db-8944-686c77cdd19d
+                                                name: Butternut Squash Soup
+                                                price: 299
+                                                image: 'https://i.ibb.co/z77NRK7/image-3.jpg'
+                                                foodInfo:
+                                                    allergens:
+                                                        - каперсы
+                                                        - сыр моцарелла
+                                                        - красный перец
+                                                    foodEnergy:
+                                                        fat: 12.4
+                                                        proteins: 10.7
+                                                        carbohydrates: 25.5
+                                                        calories: 267
+                                                    size:
+                                                        value: 300
+                                                        unit: g
+                                          isAvailable: false
+            operationId: get-product-category-list-main
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/SearchForRelativeParams'
+        parameters: []
+    /products/promo:
+        post:
+            summary: Get Products Promo
+            tags:
+                - products
+            responses:
+                '200':
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/GetProductPromoListResponse'
+                            examples:
+                                example-1:
+                                    value:
+                                        - id: 9aeef7bf-7200-4b91-a333-d4755c3ce597
+                                          title: Время для пиццы
+                                          description: Скидка на всю продукцию
+                                          expirationDateTime: '2022-12-31T18:00:00Z'
+                                          image: 'https://i.ibb.co/cFKp1n6/image.jpg'
+                                          products:
+                                              - id: d588b70b-4e97-4d26-8966-8f5acd914f56
+                                                name: Пицца микс
+                                                price: 399
+                                                image: >-
+                                                    https://www.citypizza.ru/upload/img/shop/pizza/BORT/%D0%BC%D0%B8%D0%BA%D1%81-%D0%B1%D0%BE%D1%80%D1%82.jpg
+                                                description: >-
+                                                    Пицца с сырокопчеными колбасками пепперони,
+                                                    помидорами, маслинами, сушеными базиликом и орегано,
+                                                    каперсами, сыром моцарелла и томатным соусом
+                                                    помадоро с чесноком и красным перцем.
+                                                foodInfo:
+                                                    allergens:
+                                                        - каперсы
+                                                        - сыр моцарелла
+                                                        - красный перец
+                                                    ingredients:
+                                                        - каперсы
+                                                        - сыр моцарелла
+                                                        - красный перец
+                                                    foodEnergy:
+                                                        fat: 12.4
+                                                        proteins: 10.7
+                                                        carbohydrates: 25.5
+                                                        calories: 267
+                                                    size:
+                                                        value: 300
+                                                        unit: g
+                                                additionalProducts:
+                                                    - id: ff4eca3e-af91-44e4-a320-2ef304e2390d
+                                                      name: Шампиньоны
+                                                      price: 59
+                                                    - id: 5a5bb02d-24a3-448c-8646-46b818d7850f
+                                                      name: Острый халапеньо
+                                                      price: 89
+                                                    - id: d14e2e99-8dce-4fb3-8495-6b59d045fc3f
+                                                      name: Ветчина
+                                                      price: 89
+                                              - id: 7679045c-dd00-4666-9bd4-c36033377897
+                                                name: Пицца Диабло
+                                                price: 399
+                                                image: >-
+                                                    https://makemos.ru/upload/thumbs/catalog/medium/picca-s-anchousami_094ddb.png
+                                                description: >-
+                                                    Пицца с сырокопчеными колбасками пепперони,
+                                                    помидорами, маслинами, сушеными базиликом и орегано,
+                                                    каперсами, сыром моцарелла и томатным соусом
+                                                    помадоро с чесноком и красным перцем.
+                                                foodInfo:
+                                                    allergens:
+                                                        - каперсы
+                                                        - сыр моцарелла
+                                                        - красный перец
+                                                    foodEnergy:
+                                                        fat: 12.4
+                                                        proteins: 10.7
+                                                        carbohydrates: 25.5
+                                                        calories: 267
+                                                    size:
+                                                        value: 300
+                                                        unit: g
+                                              - id: 55e9b28e-86a2-4d55-814d-e470c912defe
+                                                name: Пицца Аррива
+                                                price: 399
+                                                image: >-
+                                                    https://livestarsclub.ru/wp-content/uploads/2020/05/%D0%9F%D0%B8%D1%86%D1%86%D0%B0-el-diablo-1200x1200.jpg
+                                                description: >-
+                                                    Пицца с сырокопчеными колбасками пепперони,
+                                                    помидорами, маслинами, сушеными базиликом и орегано,
+                                                    каперсами, сыром моцарелла и томатным соусом
+                                                    помадоро с чесноком и красным перцем.
+                                                foodInfo:
+                                                    allergens:
+                                                        - каперсы
+                                                        - сыр моцарелла
+                                                        - красный перец
+                                                    foodEnergy:
+                                                        fat: 12.4
+                                                        proteins: 10.7
+                                                        carbohydrates: 25.5
+                                                        calories: 267
+                                                    size:
+                                                        value: 300
+                                                        unit: g
+                                        - id: d80dab8c-9705-4e55-9c8b-d183f9e19be1
+                                          title: Самые вкусные супы для бизнес-ланча
+                                          description: >-
+                                              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                              Curabitur semper massa sit amet luctus vulputate.
+                                              Vivamus fringilla pharetra ligula vel efficitur. In at
+                                              est in.
+                                          expirationDateTime: '2022-12-31T18:00:00Z'
+                                          image: >-
+                                              https://i.ibb.co/rZ6FMGh/Bowl-of-Vegetarian-Soup-Carrot-Tomato-and-Spinach-Soup.jpg
+                                          products:
+                                              - id: 6ff81e41-4e94-4d80-a605-959e7a793750
+                                                name: Spaghetti Squash Soup with Sausage
+                                                price: 270
+                                                image: 'https://i.ibb.co/ZXYY30n/image-1.jpg'
+                                                foodInfo:
+                                                    allergens:
+                                                        - каперсы
+                                                        - сыр моцарелла
+                                                        - красный перец
+                                                    foodEnergy:
+                                                        fat: 12.4
+                                                        proteins: 10.7
+                                                        carbohydrates: 25.5
+                                                        calories: 267
+                                                    size:
+                                                        value: 300
+                                                        unit: g
+                                              - id: be2f73c5-077c-4691-af76-d7d661034ec9
+                                                name: 'Butternut Squash, Tomato, Chard & Chickpea Soup'
+                                                price: 310
+                                                image: 'https://i.ibb.co/QDJpWgB/image-2.jpg'
+                                                foodInfo:
+                                                    allergens:
+                                                        - каперсы
+                                                        - сыр моцарелла
+                                                        - красный перец
+                                                    foodEnergy:
+                                                        fat: 12.4
+                                                        proteins: 10.7
+                                                        carbohydrates: 25.5
+                                                        calories: 267
+                                                    size:
+                                                        value: 300
+                                                        unit: g
+                                              - id: 4c0ffa61-40f4-43db-8944-686c77cdd19d
+                                                name: Butternut Squash Soup
+                                                price: 299
+                                                image: 'https://i.ibb.co/z77NRK7/image-3.jpg'
+                                                foodInfo:
+                                                    allergens:
+                                                        - каперсы
+                                                        - сыр моцарелла
+                                                        - красный перец
+                                                    foodEnergy:
+                                                        fat: 12.4
+                                                        proteins: 10.7
+                                                        carbohydrates: 25.5
+                                                        calories: 267
+                                                    size:
+                                                        value: 300
+                                                        unit: g
+                                          isAvailable: false
+                                        - id: 1f877ddb-a730-4322-9978-9d36ba04e6ee
+                                          title: Все очень по-домашнему
+                                          description: >-
+                                              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                              Curabitur semper massa sit amet luctus vulputate.
+                                              Vivamus fringilla pharetra ligula vel efficitur. In at
+                                              est in.
+                                          expirationDateTime: '2022-12-31T18:00:00Z'
+                                          image: 'https://i.ibb.co/QQmBtT7/image-4.jpg'
+                                          products: []
+                '401':
+                    description: Unauthorized
+            operationId: get-product-promo-list
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/SearchForRelativeParams'
+        parameters: []
+    '/products/category/{categoryId}':
+        parameters:
+            - schema:
+                  type: string
+              name: categoryId
+              in: path
+              required: true
+        post:
+            summary: Get category detail
+            tags:
+                - products
+            responses:
+                '200':
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/ProductCategoryDetail'
+            operationId: get-product-category-detail
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/GetProductCategoryDetailRequest'
+    /order/get-actual-price:
+        post:
+            summary: Get Order Actual Price
+            tags:
+                - order
+            responses:
+                '200':
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                type: number
+                            examples:
+                                example-1:
+                                    value: 1112
+            operationId: get-order-actual-price
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/ActualPriceParams'
+    /order/create:
+        post:
+            summary: Create Order
+            operationId: create-order
+            responses:
+                '200':
+                    description: OK
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/OrderParams'
+            tags:
+                - order
+    /product/recommended:
+        post:
+            summary: ''
+            tags:
+                - products
+            responses:
+                '200':
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/ProductList'
+                            examples:
+                                example-1:
+                                    value:
+                                        - id: 6ff81e41-4e94-4d80-a605-959e7a793750
+                                          name: Spaghetti Squash Soup with Sausage
+                                          price: 270
+                                          image: 'https://i.ibb.co/ZXYY30n/image-1.jpg'
+                                          foodInfo:
+                                              allergens:
+                                                  - каперсы
+                                                  - сыр моцарелла
+                                                  - красный перец
+                                              foodEnergy:
+                                                  fat: 12.4
+                                                  proteins: 10.7
+                                                  carbohydrates: 25.5
+                                                  calories: 267
+                                              size:
+                                                  value: 300
+                                                  unit: g
+                                          isAvailable: false
+                                        - id: be2f73c5-077c-4691-af76-d7d661034ec9
+                                          name: 'Butternut Squash, Tomato, Chard & Chickpea Soup'
+                                          price: 310
+                                          image: 'https://i.ibb.co/QDJpWgB/image-2.jpg'
+                                          foodInfo:
+                                              allergens:
+                                                  - каперсы
+                                                  - сыр моцарелла
+                                                  - красный перец
+                                              foodEnergy:
+                                                  fat: 12.4
+                                                  proteins: 10.7
+                                                  carbohydrates: 25.5
+                                                  calories: 267
+                                              size:
+                                                  value: 300
+                                                  unit: g
+                                          isAvailable: false
+                                        - id: 4c0ffa61-40f4-43db-8944-686c77cdd19d
+                                          name: Butternut Squash Soup
+                                          price: 299
+                                          image: 'https://i.ibb.co/z77NRK7/image-3.jpg'
+                                          foodInfo:
+                                              allergens:
+                                                  - каперсы
+                                                  - сыр моцарелла
+                                                  - красный перец
+                                              foodEnergy:
+                                                  fat: 12.4
+                                                  proteins: 10.7
+                                                  carbohydrates: 25.5
+                                                  calories: 267
+                                              size:
+                                                  value: 300
+                                                  unit: g
+                                          isAvailable: false
+            operationId: get-product-recommended-list
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                productId:
+                                    type: string
+                                searchForRelativeParams:
+                                    $ref: '#/components/schemas/SearchForRelativeParams'
+                            required:
+                                - searchForRelativeParams
+    /order/current-order-info:
+        get:
+            summary: Get Current Order Info
+            tags:
+                - order
+            responses:
+                '200':
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/GetCurrentOrderResponse'
+            operationId: get-current-order-info
+components:
+    schemas:
+        DeliveryTypeEnum:
+            type: string
+            title: DeliveryTypeEnum
+            enum:
+                - courier
+                - self
+        AddressPickup:
+            title: ''
+            type: object
+            properties:
+                id:
+                    type: string
+                location:
+                    $ref: '#/components/schemas/Location'
+                address:
+                    type: string
+                badge:
+                    type: string
+            required:
+                - id
+                - location
+                - address
+        AddressSuggest:
+            title: ''
+            type: object
+            properties:
+                address:
+                    type: string
+                location:
+                    $ref: '#/components/schemas/Location'
+            required:
+                - address
+                - location
+        Location:
+            title: ''
+            type: object
+            properties:
+                longitude:
+                    type: number
+                latitude:
+                    type: number
+            required:
+                - longitude
+                - latitude
+        AddressSuggestRequest:
+            title: AddressSuggestRequest
+            type: object
+            properties:
+                address:
+                    type: string
+            required:
+                - address
+        AddressSuggestResponse:
+            title: AddressSuggestResponse
+            type: array
+            items:
+                $ref: '#/components/schemas/AddressSuggest'
+        GetAddressPickupListResponse:
+            title: ''
+            type: array
+            items:
+                $ref: '#/components/schemas/AddressPickup'
+        AuthSocialProviderEnum:
+            type: string
+            title: ''
+            enum:
+                - vk
+                - fb
+            x-tags:
+                - auth
+        AuthToken:
+            title: ''
+            type: object
+            properties:
+                access:
+                    type: string
+                refresh:
+                    type: string
+            required:
+                - access
+                - refresh
+        AuthCodeVerifyRequest:
+            title: ''
+            type: object
+            x-tags:
+                - auth
+            properties:
+                phoneNumber:
+                    type: string
+                code:
+                    type: string
+            required:
+                - phoneNumber
+                - code
+        AuthRefreshTokenRequest:
+            title: ''
+            type: object
+            properties:
+                refresh:
+                    type: string
+            required:
+                - refresh
+        AuthSendCodeRequest:
+            title: ''
+            type: object
+            properties:
+                phoneNumber:
+                    type: string
+                    minLength: 1
+                    example: '+79171234567'
+                    format: phoneNumber
+            required:
+                - phoneNumber
+            x-tags:
+                - auth
+        AuthSocialRequest:
+            title: ''
+            type: object
+            x-tags:
+                - auth
+            properties:
+                token:
+                    type: string
+                provider:
+                    $ref: '#/components/schemas/AuthSocialProviderEnum'
+            required:
+                - token
+                - provider
+        PushNotificationsSubscribeRequest:
+            title: ''
+            type: object
+            properties:
+                provider:
+                    type: string
+                    enum:
+                        - ios
+                        - android
+                token:
+                    type: string
+            required:
+                - provider
+                - token
+            x-tags:
+                - auth
+        PushNotificationsUnsubscribeRequest:
+            title: ''
+            type: object
+            x-tags:
+                - auth
+            properties:
+                token:
+                    type: string
+            required:
+                - token
+        AuthSendCodeResponse:
+            title: ''
+            type: object
+            properties:
+                expirationDateTime:
+                    type: string
+                    format: date-time
+            required:
+                - expirationDateTime
+            x-examples:
+                example-1:
+                    expirationDateTime: '2019-08-24T14:15:22Z'
+            x-tags:
+                - auth
+        ActualPriceParams:
+            title: ''
+            type: object
+            properties:
+                products:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/OrderProduct'
+                delivery:
+                    $ref: '#/components/schemas/OrderDelivery'
+                promocode:
+                    type: string
+            required:
+                - products
+                - delivery
+        OrderDelivery:
+            title: OrderDelivery
+            oneOf:
+                - $ref: '#/components/schemas/AddressPickup'
+                - $ref: '#/components/schemas/UserAddress'
+        OrderParams:
+            title: ''
+            type: object
+            properties:
+                products:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/OrderProduct'
+                delivery:
+                    $ref: '#/components/schemas/OrderDelivery'
+                deliveryTime:
+                    type: string
+                promocode:
+                    type: string
+                paymentType:
+                    type: string
+                    enum:
+                        - cash
+                        - by_card_to_courier
+                        - by_card_online
+                emailPaymentReceipt:
+                    type: string
+            required:
+                - products
+                - delivery
+                - deliveryTime
+                - paymentType
+        OrderProduct:
+            title: OrderProduct
+            type: object
+            properties:
+                id:
+                    type: string
+                quantity:
+                    type: number
+                additionalProducts:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/AdditionalProduct'
+                removeIngredients:
+                    type: array
+                    items:
+                        type: string
+                isGift:
+                    type: boolean
+            required:
+                - id
+                - quantity
+        OrderStatus:
+            type: string
+            title: OrderStatus
+            enum:
+                - ordering_process
+                - cooking
+                - place_an_order
+                - shiping
+                - done
+        GetCurrentOrderResponse:
+            title: GetCurrentOrderResponse
+            type: object
+            properties:
+                id:
+                    type: string
+                status:
+                    $ref: '#/components/schemas/OrderStatus'
+                products:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/UserOrderProductDetail'
+                createdAt:
+                    type: string
+                timeLeft:
+                    type: string
+            required:
+                - id
+                - status
+                - products
+                - createdAt
+        FoodEnergy:
+            title: FoodEnergy
+            type: object
+            properties:
+                fat:
+                    type: number
+                    description: жиры
+                proteins:
+                    type: number
+                    description: белки
+                carbohydrates:
+                    type: number
+                    description: углеводы
+                calories:
+                    type: number
+                    description: калории
+            x-tags:
+                - products
+        FoodInfo:
+            title: FoodInfo
+            type: object
+            properties:
+                allergens:
+                    type: array
+                    items:
+                        type: string
+                foodEnergy:
+                    $ref: '#/components/schemas/FoodEnergy'
+                size:
+                    $ref: '#/components/schemas/ProductSize'
+                ingredients:
+                    type: array
+                    items:
+                        type: string
+        ProductSize:
+            title: ProductSize
+            oneOf:
+                - $ref: '#/components/schemas/Weight'
+                - $ref: '#/components/schemas/Volume'
+        SearchForCourierDelivery:
+            title: SearchForCourierDelivery
+            type: object
+            properties:
+                courierAddressLocation:
+                    $ref: '#/components/schemas/Location'
+            required:
+                - courierAddressLocation
+        SearchForPickupDelivery:
+            title: SearchForPickupDelivery
+            type: object
+            properties:
+                pickupAddressId:
+                    type: string
+            required:
+                - pickupAddressId
+        SearchForRelativeParams:
+            title: ''
+            oneOf:
+                - $ref: '#/components/schemas/SearchForCourierDelivery'
+                - $ref: '#/components/schemas/SearchForPickupDelivery'
+        AdditionalProduct:
+            title: ''
+            type: object
+            properties:
+                id:
+                    type: string
+                name:
+                    type: string
+                price:
+                    type: number
+            required:
+                - id
+                - name
+                - price
+        ProductCategoryDetail:
+            title: ''
+            type: object
+            x-tags:
+                - products
+            properties:
+                id:
+                    type: string
+                title:
+                    type: string
+                products:
+                    $ref: '#/components/schemas/ProductList'
+                isAvailable:
+                    type: boolean
+                availableDateTime:
+                    type: string
+                    format: date-time
+            required:
+                - id
+                - title
+                - products
+                - isAvailable
+        ProductCategoryPreview:
+            title: ''
+            type: object
+            x-tags:
+                - products
+            properties:
+                id:
+                    type: string
+                title:
+                    type: string
+                products:
+                    $ref: '#/components/schemas/ProductList'
+                isAvailable:
+                    type: boolean
+                availableDateTime:
+                    type: string
+                    format: date-time
+                    description: Время активациии категории
+            required:
+                - id
+                - title
+                - products
+                - isAvailable
+        ProductDetail:
+            title: Product
+            type: object
+            x-tags:
+                - products
+            properties:
+                id:
+                    type: string
+                name:
+                    type: string
+                price:
+                    type: number
+                image:
+                    type: string
+                description:
+                    type: string
+                foodInfo:
+                    $ref: '#/components/schemas/FoodInfo'
+                additionalProducts:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/AdditionalProduct'
+                isAvailable:
+                    type: boolean
+            required:
+                - id
+                - name
+                - price
+                - image
+                - foodInfo
+        ProductList:
+            title: ''
+            type: array
+            items:
+                $ref: '#/components/schemas/ProductDetail'
+        ProductPromo:
+            title: ''
+            type: object
+            properties:
+                id:
+                    type: string
+                title:
+                    type: string
+                description:
+                    type: string
+                products:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/ProductDetail'
+                startDateTime:
+                    type: string
+                expirationDateTime:
+                    type: string
+                    format: date-time
+                image:
+                    type: string
+                isAvailable:
+                    type: boolean
+            required:
+                - id
+                - title
+                - products
+                - image
+        GetProductCategoryDetailRequest:
+            type: object
+            properties:
+                searchForRelativeParams:
+                    $ref: '#/components/schemas/SearchForRelativeParams'
+                tags:
+                    type: array
+                    items:
+                        type: string
+            required:
+                - searchForRelativeParams
+        GetProductCategoryListMainResponse:
+            title: ''
+            type: array
+            items:
+                $ref: '#/components/schemas/ProductCategoryPreview'
+        GetProductPromoListResponse:
+            title: ''
+            type: array
+            items:
+                $ref: '#/components/schemas/ProductPromo'
+        Volume:
+            title: ''
+            type: object
+            properties:
+                value:
+                    type: number
+                unit:
+                    $ref: '#/components/schemas/VolumeUnitEnum'
+            required:
+                - value
+                - unit
+        VolumeUnitEnum:
+            type: string
+            title: ''
+            enum:
+                - l
+                - ml
+        Weight:
+            title: ''
+            type: object
+            properties:
+                value:
+                    type: number
+                unit:
+                    $ref: '#/components/schemas/WeightUnitEnum'
+            required:
+                - value
+                - unit
+        WeightUnitEnum:
+            type: string
+            title: ''
+            enum:
+                - g
+                - kg
+        UserGenderEnum:
+            type: string
+            title: UserGenderEnum
+            enum:
+                - man
+                - women
+            x-tags:
+                - user
+        User:
+            title: ''
+            type: object
+            x-tags:
+                - user
+            x-examples: {}
+            properties:
+                firstName:
+                    type: string
+                birthday:
+                    type: string
+                    format: date
+                email:
+                    type: string
+                    format: email
+                gender:
+                    $ref: '#/components/schemas/UserGenderEnum'
+                hasKids:
+                    type: boolean
+                phoneNumber:
+                    type: string
+            required:
+                - phoneNumber
+        UserAddress:
+            description: ''
+            type: object
+            x-examples:
+                example-1:
+                    id: string
+                    name: string
+                    address: string
+                    entrance: string
+                    floor: 0
+                    apartmentNumber: string
+                    courierComment: string
+                    createdAt: '2019-08-24T14:15:22Z'
+                    updatedAt: '2019-08-24T14:15:22Z'
+            properties:
+                id:
+                    type: string
+                name:
+                    type: string
+                address:
+                    type: string
+                entrance:
+                    type: string
+                floor:
+                    type: number
+                apartmentNumber:
+                    type: string
+                courierComment:
+                    type: string
+                createdAt:
+                    type: string
+                    format: date-time
+                updatedAt:
+                    type: string
+                    format: date-time
+                location:
+                    $ref: '#/components/schemas/Location'
+            required:
+                - id
+                - name
+                - address
+                - createdAt
+                - updatedAt
+                - location
+        UserOrder:
+            title: ''
+            type: object
+            properties:
+                id:
+                    type: string
+                price:
+                    type: number
+                products:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/UserOrderProductDetail'
+                createdAt:
+                    type: string
+                dateFinish:
+                    type: string
+                deliveryType:
+                    $ref: '#/components/schemas/DeliveryTypeEnum'
+            required:
+                - id
+                - price
+                - products
+                - createdAt
+                - dateFinish
+                - deliveryType
+        UserOrderProductDetail:
+            title: ''
+            type: object
+            properties:
+                id:
+                    type: string
+                name:
+                    type: string
+                image:
+                    type: string
+                quantity:
+                    type: number
+                price:
+                    type: number
+                amount:
+                    type: number
+            required:
+                - id
+                - name
+                - image
+                - quantity
+                - price
+                - amount
+        UserPreferences:
+            title: ''
+            type: object
+            properties:
+                spicy:
+                    type: boolean
+                vegan:
+                    type: boolean
+                exclude:
+                    type: array
+                    items:
+                        type: string
+                allergies:
+                    type: array
+                    items:
+                        type: string
+            required:
+                - spicy
+                - vegan
+                - exclude
+                - allergies
+        CreateUserAddressRequest:
+            description: ''
+            type: object
+            x-examples:
+                example-1:
+                    id: string
+                    name: string
+                    address: string
+                    entrance: string
+                    floor: 0
+                    apartmentNumber: string
+                    courierComment: string
+                    createdAt: '2019-08-24T14:15:22Z'
+                    updatedAt: '2019-08-24T14:15:22Z'
+            properties:
+                name:
+                    type: string
+                    minLength: 1
+                address:
+                    type: string
+                    minLength: 1
+                entrance:
+                    type: string
+                    minLength: 1
+                floor:
+                    type: number
+                apartmentNumber:
+                    type: string
+                    minLength: 1
+                courierComment:
+                    type: string
+                    minLength: 1
+            required:
+                - name
+                - address
+        UpdateUserAddressRequest:
+            description: ''
+            type: object
+            x-examples:
+                example-1:
+                    id: string
+                    name: string
+                    address: string
+                    entrance: string
+                    floor: 0
+                    apartmentNumber: string
+                    courierComment: string
+                    createdAt: '2019-08-24T14:15:22Z'
+                    updatedAt: '2019-08-24T14:15:22Z'
+            properties:
+                name:
+                    type: string
+                    minLength: 1
+                address:
+                    type: string
+                    minLength: 1
+                entrance:
+                    type: string
+                    minLength: 1
+                floor:
+                    type: number
+                apartmentNumber:
+                    type: string
+                    minLength: 1
+                courierComment:
+                    type: string
+                    minLength: 1
+        UpdateUserPreferencesRequest:
+            title: ''
+            type: object
+            properties:
+                spicy:
+                    type: boolean
+                vegan:
+                    type: boolean
+                exclude:
+                    type: array
+                    items:
+                        type: string
+                allergies:
+                    type: array
+                    items:
+                        type: string
+        UpdateUserRequest:
+            description: ''
+            type: object
+            x-examples:
+                example-1:
+                    id: string
+                    firstName: string
+                    birthday: '2019-08-24T14:15:22Z'
+                    email: user@example.com
+                    gender: man
+                    hasKids: true
+                    phoneNumber: string
+            properties:
+                firstName:
+                    type: string
+                birthday:
+                    type: string
+                email:
+                    type: string
+                gender:
+                    $ref: '#/components/schemas/UserGenderEnum'
+                hasKids:
+                    type: boolean
+        GetUserAddressListResponse:
+            title: ''
+            type: array
+            items:
+                $ref: '#/components/schemas/UserAddress'
+        GetUserOrderListResponse:
+            title: ''
+            type: array
+            items:
+                $ref: '#/components/schemas/UserOrder'
+    responses: {}
+    securitySchemes: {}
+    requestBodies: {}
+    examples: {}

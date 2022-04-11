@@ -1,0 +1,19 @@
+@import "src/styles/variables";
+
+.DishModalWindowScreen_Ingredient__button {
+  display: inline-block;
+}
+
+.DishModalWindowScreen_Ingredient__span_notDeleted {
+  text-decoration: underline;
+}
+
+.DishModalWindowScreen_Ingredient__span_deleted {
+  text-decoration: line-through;
+}
+
+.DishModalWindowScreen_Ingredient__svg {
+  height: px-to-rem(15);
+  width: px-to-rem(15);
+  display: inline-block;
+}

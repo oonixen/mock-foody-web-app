@@ -1,0 +1,28 @@
+@import "src/styles/variables";
+@import "src/styles/functions/pxToRem";
+
+.CustomSelector__suggestionButton {
+    display: block;
+    width: 100%;
+    background-color: $color--white;
+    text-align: left;
+    padding: px-to-rem(15) px-to-rem(22);
+
+    &:hover {
+        color: $color--purpleMedium;
+    }
+}
+
+.CustomSelector__suggestionContainer {
+    padding: px-to-rem(9px) 0;
+}
+
+.CustomSelector__suggestionButton_active {
+    color: $color--purpleMedium;
+}
+
+@media (max-width: $width--phone) {
+    .CustomSelector__suggestionButton {
+        padding: px-to-rem(10) px-to-rem(17);
+    }
+}

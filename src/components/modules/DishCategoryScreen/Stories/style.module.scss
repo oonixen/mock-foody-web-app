@@ -1,0 +1,113 @@
+@import "src/styles/functions/pxToRem";
+@import "src/styles/variables";
+
+$margin--right: 12px;
+
+.DishCategoryScreen_Stories__block_parent {
+    position: relative;
+}
+
+.DishCategoryScreen_Stories__block {
+    white-space: nowrap;
+    overflow: hidden;
+
+    &::-webkit-scrollbar {
+        display: none;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+}
+
+.DishCategoryScreen_Stories__StoryMin_button {
+    display: inline-block;
+    width: calc(20% - #{calc(calc(#{$margin--right} * 4) / 5)});
+    aspect-ratio: 0.78;
+    border: 3px solid $color--purpleMedium;
+    padding: px-to-rem(8);
+    border-radius: px-to-rem(20);
+    text-align: left;
+    color: $color--black;
+
+    &:not(:last-child) {
+        margin-right: $margin--right;
+    }
+}
+
+.DishCategoryScreen_Stories__StoryMin_innerBlock {
+    position: relative;
+    overflow: hidden;
+    background-color: $color--lightestGrey;
+    border-radius: px-to-rem(20);
+    height: 100%;
+}
+
+.DishCategoryScreen_Stories__StoryMin_p {
+    position: absolute;
+    padding: 0 px-to-rem(19);
+    bottom: px-to-rem(33);
+    font-family: $font--text-bold;
+    font-size: px-to-rem(25);
+    white-space: break-spaces;
+}
+
+.DishCategoryScreen_Stories__button {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    padding: px-to-rem(8);
+    width: px-to-rem(32);
+}
+
+.DishCategoryScreen_Stories__button_left {
+    right: 100%;
+}
+
+.DishCategoryScreen_Stories__button_right {
+    left: 100%;
+}
+
+.DishCategoryScreen_Stories__arrowSvg {
+    width: 100%;
+}
+
+.DishCategoryScreen_Stories__arrowSvg_left {
+    transform: rotate(180deg);
+}
+
+@media (max-width: 1330px) {
+    .DishCategoryScreen_Stories__StoryMin_p {
+        font-size: px-to-rem(18);
+        bottom: px-to-rem(15);
+    }
+}
+
+@media (max-width: $width--tablet) {
+    .DishCategoryScreen_Stories__block {
+        overflow: auto;
+        position: absolute;
+        width: calc(100% + calc(#{$indent--sm} * 2));
+        left: -$indent--sm;
+    }
+
+    .DishCategoryScreen_Stories__block_parent {
+        margin-top: px-to-rem(17);
+        height: px-to-rem(190);
+    }
+
+    .DishCategoryScreen_Stories__StoryMin_button {
+        display: inline-block;
+        width: px-to-rem(148);
+
+        &:first-child {
+            margin-left: $indent--sm;
+        }
+
+        &:last-child {
+            margin-right: $indent--sm;
+        }
+    }
+
+    .DishCategoryScreen_Stories__button {
+        display: none !important;
+    }
+}

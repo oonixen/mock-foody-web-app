@@ -1,0 +1,55 @@
+@import "src/styles/variables";
+
+.OrderProfileScreen__section {
+  width: px-to-rem(600);
+  background-color: white;
+  border-radius: px-to-rem(32);
+  padding: px-to-rem(28) px-to-rem(49);
+}
+
+.OrderProfileScreen__number {
+  display: block;
+  font-size: px-to-rem(26);
+  color: $color--lightDark;
+}
+
+.OrderProfileScreen__date {
+  display: block;
+  margin-bottom: px-to-rem(41);
+  font-size: px-to-rem(37);
+  color: $color--purpleMedium;
+}
+
+.OrderProfileScreen__dishBlock {
+  height: px-to-rem(330);
+  padding-right: px-to-rem(16);
+  overflow: auto;
+}
+.OrderProfileScreen__sum {
+  display: block;
+  text-align: center;
+  margin-top: px-to-rem(27);
+  font-size: px-to-rem(26);
+}
+
+.OrderProfileScreen__buttonBlock {
+  margin-top: px-to-rem(16);
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: $width--phone) {
+  .OrderProfileScreen__section {
+    width: 95vw;
+    padding: px-to-rem(25) px-to-rem(30);
+  }
+
+  .OrderProfileScreen__date {
+    font-size: px-to-rem(22);
+    margin-bottom: px-to-rem(20);
+  }
+
+  .OrderProfileScreen__dishBlock {
+    height: px-to-rem(300);
+  }
+}

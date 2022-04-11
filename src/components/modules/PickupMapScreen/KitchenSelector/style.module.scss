@@ -1,0 +1,91 @@
+@import "src/styles/variables";
+@import "src/styles/functions/pxToRem";
+
+.PickupMapScreen_KitchenSelector__block {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    height: 100%;
+    width: px-to-rem(375);
+    padding: px-to-rem(44) px-to-rem(25) px-to-rem(44) px-to-rem(20);
+    border-bottom-right-radius: px-to-rem(29);
+    border-top-right-radius: px-to-rem(29);
+}
+
+.PickupMapScreen_KitchenSelector__h2 {
+    font-size: px-to-rem(16);
+    color: $color--purpleMedium;
+    text-align: center;
+}
+
+.PickupMapScreen_KitchenSelector__selectorBlock {
+    margin-top: px-to-rem(40);
+    margin-bottom: px-to-rem(20);
+    max-height: px-to-rem(270);
+    width: 100%;
+    overflow: auto;
+}
+
+.PickupMapScreen_KitchenSelector__button {
+    width: 100%;
+    font-size: px-to-rem(20);
+}
+
+.PickupMapScreen_KitchenSelector__text_top {
+    color: $color--black;
+    font-size: px-to-rem(18);
+    margin-bottom: px-to-rem(6);
+}
+
+.PickupMapScreen_KitchenSelector__text_bottom {
+    color: $color--lightDark;
+    font-size: px-to-rem(15);
+    margin-bottom: px-to-rem(9);
+}
+
+.PickupMapScreen_KitchenSelector__saleBlock {
+    font-size: px-to-rem(11);
+    margin-left: px-to-rem(16);
+    padding: px-to-rem(2) px-to-rem(6);
+    background-color: $color--sand;
+    border-radius: px-to-rem(4);
+    white-space: nowrap;
+}
+
+.PickupMapScreen_KitchenSelector__closeButton {
+    display: none;
+    position: absolute;
+    right: 100%;
+    width: px-to-rem(46);
+    height: px-to-rem(30);
+    background-color: transparent;
+}
+
+@media (max-width: $width--laptop) {
+    .PickupMapScreen_KitchenSelector__selectorBlock {
+        margin-top: px-to-rem(40);
+        margin-bottom: px-to-rem(20);
+        max-height: px-to-rem(170);
+    }
+}
+
+@media (max-width: $width--phone) {
+    .PickupMapScreen_KitchenSelector__block {
+        display: none;
+        position: absolute;
+        right: 0;
+        width: 70%;
+    }
+
+    .PickupMapScreen_KitchenSelector__selectorBlock {
+        max-height: 70%;
+        margin-top: px-to-rem(20);
+        margin-bottom: px-to-rem(20);
+    }
+
+    .PickupMapScreen_KitchenSelector__closeButton {
+        display: block;
+    }
+}

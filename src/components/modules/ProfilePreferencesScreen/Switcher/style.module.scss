@@ -1,0 +1,13 @@
+@import "src/styles/variables";
+
+.PreferencesScreen_Switcher__label {
+  display: flex;
+  justify-content: space-between;
+  max-width: px-to-rem(500);
+  padding: px-to-rem(21) 0;
+  border-bottom: 1px solid $color--darkGrey;
+}
+
+.PreferencesScreen_Switcher__span {
+  font-size: px-to-rem(22);
+}

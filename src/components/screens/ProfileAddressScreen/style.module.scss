@@ -1,0 +1,28 @@
+@import "../../../styles/variables";
+
+.ProfileAddressScreen__block {
+    display: flex;
+    flex-direction: column;
+}
+
+.ProfileAddressScreen__button {
+    max-width: px-to-rem(500);
+    padding: px-to-rem(14) 0;
+    margin-bottom: px-to-rem(8);
+    border-bottom: 1px solid $color--lightGrey;
+}
+
+.ProfileAddressScreen__addAddressButton {
+    display: flex;
+    align-items: center;
+    margin-top: px-to-rem(40);
+}
+
+.ProfileAddressScreen__svg {
+    margin-right: px-to-rem(11);
+}
+
+.ProfileAddressScreen__span {
+    color: $color--purpleMedium;
+    font-size: px-to-rem(22);
+}

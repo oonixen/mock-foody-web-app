@@ -1,0 +1,40 @@
+@import "src/styles/variables";
+
+.AddressEditButton__radioButtonBlock {
+    position: relative;
+    width: 100%;
+}
+
+.AddressEditButton__addressNameBlock_column {
+    display: flex;
+    flex-direction: column;
+}
+
+.AddressEditButton__addressNickname {
+    width: fit-content;
+    padding: px-to-rem(2) px-to-rem(6);
+    border-radius: px-to-rem(5);
+    background-color: $color--purpleMedium;
+    font-size: px-to-rem(13);
+    color: $color--white;
+}
+
+.AddressEditButton__addressNickname_absolute {
+    position: absolute;
+    bottom: 100%;
+}
+
+.AddressEditButton__nameAndPenBlock {
+    display: flex;
+}
+
+.AddressEditButton__addressName {
+    width: 100%;
+    font-size: px-to-rem(22);
+    color: $color--dark;
+    margin-right: px-to-rem(8);
+}
+
+.AddressEditButton__pen {
+    height: px-to-rem(23);
+}

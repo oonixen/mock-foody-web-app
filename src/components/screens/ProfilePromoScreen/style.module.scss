@@ -1,0 +1,39 @@
+@import "src/styles/variables";
+
+.ProfilePromoScreen__block {
+  text-align: center;
+  max-width: px-to-rem(470);
+  padding: px-to-rem(30) px-to-rem(60);
+  border-radius: px-to-rem(30);
+  background-color: #cebef1;
+}
+
+.ProfilePromoScreen__text {
+  display: block;
+  font-size: px-to-rem(35);
+  color: $color--purpleMedium;
+}
+
+.ProfilePromoScreen__input {
+  margin-top: px-to-rem(30);
+  display: block;
+  width: 100%;
+  padding: px-to-rem(8) px-to-rem(16);
+  font-size: px-to-rem(22);
+  border-radius: px-to-rem(30);
+  background-color: $color--white;
+}
+
+.ProfilePromoScreen__button {
+  margin-top: px-to-rem(40);
+}
+
+@media (max-width: $width--phone) {
+  .ProfilePromoScreen__block {
+    padding: px-to-rem(20) px-to-rem(30);
+  }
+
+  .ProfilePromoScreen__text {
+    font-size: px-to-rem(28);
+  }
+}

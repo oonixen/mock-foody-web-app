@@ -1,0 +1,104 @@
+@import "src/styles/functions/pxToRem";
+@import "src/styles/variables";
+
+.DishCategoryScreen_Header__header {
+    height: $height--dishCategoryScreen_big;
+    z-index: 100;
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: $color--white;
+}
+
+.DishCategoryScreen_Header__topBlock {
+    display: flex;
+    justify-content: space-between;
+    padding: px-to-rem(22) 0;
+}
+
+.DishCategoryScreen_Header__div {
+    display: flex;
+    align-items: center;
+}
+
+.DishCategoryScreen_Header__logo {
+    width: px-to-rem(146);
+    height: px-to-rem(54);
+    margin-right: px-to-rem(36);
+}
+
+.DishCategoryScreen_Header__showMenuButtonBlock {
+    margin-right: px-to-rem(16);
+}
+
+.DishCategoryScreen_Header__basketButton {
+    margin-right: px-to-rem(16);
+    font-size: px-to-rem(18);
+}
+
+.DishCategoryScreen_Header__profileNav {
+    height: px-to-rem(41);
+    width: px-to-rem(41);
+}
+
+.DishCategoryScreen_Header__userLogo {
+    width: 100%;
+}
+
+.DishCategoryScreen_Header__userLogo {
+    height: px-to-rem(41);
+    width: px-to-rem(41);
+}
+
+.DishCategoryScreen_Header__bottomBlock_parent {
+    height: px-to-rem(56);
+}
+
+.DishCategoryScreen_Header__bottomBlock {
+    z-index: 10;
+    background-color: $color--white;
+    border-radius: 16px 16px 0 0;
+    padding: px-to-rem(8) 0;
+}
+
+.DishCategoryScreen_Header__dishSearchInput {
+    width: 100% !important;
+}
+
+@media (max-width: $width--laptop) {
+
+    .DishCategoryScreen_Header__logo {
+        width: px-to-rem(100);
+        margin-right: px-to-rem(16);
+    }
+
+    .DishCategoryScreen_Header__basketButton {
+        font-size: px-to-rem(15) !important;
+    }
+}
+
+@media (max-width: $width--tablet) {
+    .DishCategoryScreen_Header__header {
+        position: relative;
+        background-color: $color--lightestGrey;
+    }
+
+    .DishCategoryScreen_Header__topBlock {
+        padding: px-to-rem(16) 0;
+    }
+
+    .DishCategoryScreen_Header__div:first-child {
+        display: none;
+    }
+
+    .DishCategoryScreen_Header__basketButton {
+        display: none;
+    }
+
+    .DishCategoryScreen_Header__div {
+        width: 100%;
+        justify-content: space-between;
+    }
+}

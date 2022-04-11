@@ -1,0 +1,73 @@
+@import "src/styles/functions/pxToRem";
+@import "src/styles/variables";
+
+.DishesScreen_Header__header {
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: $height--dishesScreen_header;
+    padding-top: px-to-rem(13);
+    padding-bottom: px-to-rem(13);
+    border-bottom: 1px solid $color--grey;
+    background-color: $color--white;
+}
+
+.DishesScreen_Header__backButton {
+    display: none;
+    align-items: center;
+    color: $color--purpleMedium;
+}
+
+.DishesScreen_Header__backNavLink {
+    display: flex;
+    align-items: center;
+}
+
+.DishesScreen_Header__arrow {
+    display: inline-block;
+    margin-right: px-to-rem(4);
+    width: px-to-rem(20);
+    height: 100%;
+    object-fit: scale-down;
+    transform: rotate(180deg);
+}
+
+.DishesScreen_Header__leftHeaderBlock {
+    display: flex;
+}
+
+.DishesScreen_Header__logo {
+    width: px-to-rem(55);
+    height: px-to-rem(35);
+    margin-right: px-to-rem(32);
+}
+
+.DishesScreen_Header__showMenuButtonBlock {
+    margin-right: px-to-rem(16);
+}
+
+.DishesScreen_Header__RoundBorderButton {
+    padding: px-to-rem(8) px-to-rem(20);
+}
+
+@media (max-width: $width--tablet) {
+    .DishesScreen_Header__backButton {
+        display: flex;
+    }
+
+    .DishesScreen_Header__logo {
+        display: none;
+    }
+
+    .DishesScreen_Header__showMenuButtonBlock {
+        display: none;
+    }
+
+    .DishesScreen_Header__RoundBorderButton {
+        display: none;
+    }
+}

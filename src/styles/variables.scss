@@ -1,0 +1,55 @@
+@import "./functions/pxToRem";
+
+// Colors
+$color--purpleDark: #58388d;
+$color--purpleMedium: #8253dd;
+$color--purpleLight: #c1a9ee;
+$color--yellow: #fcea10;
+$color--sand: #fad000;
+$color--marsh: #574800;
+$color--white: #ffffff;
+$color--lightestGrey: #f3f3f3;
+$color--lightGrey: #eaeaea;
+$color--grey: #dedede;
+$color--darkGrey: #d7d7d7;
+$color--darkestGrey: #c4c4c4;
+$color--lightDark: #9b9b9b;
+$color--dark: #616161;
+$color--darkest: #383838;
+$color--black: #232323;
+
+// Indents
+$indent--3xs: 0.25rem;
+$indent--2xs: 0.3125rem;
+$indent--xs: 0.5rem;
+$indent--sm: 1rem;
+$indent--lg: 1.5rem;
+$indent--2x: 2rem;
+$indent--3x: 2.5rem;
+$indent--4x: 3rem;
+$indent--5x: 3.5rem;
+$indent--6x: 4rem;
+
+// Border radius
+$radius--sm: 5.84298px;
+
+// Font family
+$font--text: GolosTextWebMedium, serif;
+$font--text-bold: GolosTextWebBlack, serif;
+$font--numbers: PTRootUIWebMedium, serif;
+$font--priority: $font--text, -apple-system, BlinkMacSystemFont, Segoe UI,
+  Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
+  sans-serif;
+
+// Adaptation design
+$width--phone: 602px;
+$width--tablet: 991px;
+$width--laptop: 1600px;
+
+// Heights
+$height--dishCategoryScreen_big: px-to-rem(98);
+$height--dishesScreen_header: px-to-rem(70);
+$height--basketScreen_header_big: px-to-rem(90);
+$height--basketScreen_header_small: px-to-rem(65);
+$height--profileScreen_header: px-to-rem(90);
+$height--profileScreen_header_small: px-to-rem(65);

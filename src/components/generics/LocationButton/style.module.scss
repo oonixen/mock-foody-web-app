@@ -1,0 +1,24 @@
+@import "src/styles/variables";
+@import "src/styles/functions/pxToRem";
+
+.LocationButton__button {
+    padding: px-to-rem(17);
+    height: px-to-rem(71);
+    width: px-to-rem(81);
+    border-radius: px-to-rem(21);
+    background-color: white;
+    box-shadow: 0 1.6212px 11.3484px rgba(112, 112, 112, 0.6);
+}
+
+.LocationButton__svg {
+    width: 100%;
+    height: 100%;
+}
+
+@media (max-width: $width--phone) {
+    .LocationButton__button {
+        height: px-to-rem(40);
+        width: px-to-rem(50);
+        padding: px-to-rem(8);
+    }
+}

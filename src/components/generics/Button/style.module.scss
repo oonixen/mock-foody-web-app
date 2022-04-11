@@ -1,0 +1,81 @@
+@use "sass:math";
+@import "src/styles/variables";
+@import "src/styles/functions/pxToRem";
+
+.Button__div {
+    position: relative;
+    width: 100%;
+}
+
+.Button__loaderBlock {
+    width: fit-content;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.Button__button {
+    height: fit-content;
+    font-size: px-to-rem(23);
+    padding: px-to-rem(7) px-to-rem(31);
+    position: relative;
+    cursor: pointer;
+    height: fit-content;
+    border-radius: px-to-rem(52);
+    transition: background-color 0.3s ease-in-out;
+    font-size: px-to-rem(23);
+    border: px-to-rem(1) solid;
+}
+
+.Button__button_purpleMedium {
+    border-color: $color--purpleMedium;
+    background-color: $color--purpleMedium;
+    color: $color--white;
+
+    &:hover {
+        background-color: inherit;
+        color: $color--purpleMedium;
+    }
+}
+
+.Button__button_purpleLight {
+    border-color: $color--purpleLight;
+    background-color: $color--purpleLight;
+    color: $color--black;
+
+    &:hover {
+        background-color: inherit;
+    }
+}
+
+.Button__button_inherit {
+    border-color: $color--purpleMedium;
+    background-color: inherit;
+    color: $color--purpleMedium;
+    transition: border-color 0.3s ease-in-out;
+
+    &:hover {
+        border-color: $color--purpleLight;
+    }
+}
+
+.Button__button_increaseAnimation {
+    opacity: 0;
+    position: absolute;
+    animation: increaseAnimation 0.9s ease;
+    color: $color--darkestGrey;
+    font-weight: bold;
+}
+
+@keyframes increaseAnimation {
+    from {
+        opacity: 1;
+        top: px-to-rem(-13);
+    }
+    to {
+        opacity: 0;
+        top: px-to-rem(-50);
+    }
+}

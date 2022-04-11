@@ -1,0 +1,18 @@
+@import "../../../styles/variables";
+
+.ProfileNavigationScreen__nav {
+    margin-top: px-to-rem(40);
+}
+.ProfileNavigationScreen__button {
+    padding: px-to-rem(13) 0;
+}
+
+.ProfileNavigationScreen__exitButton {
+    position: absolute;
+    bottom: px-to-rem(32);
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: fit-content;
+    font-size: px-to-rem(16);
+}

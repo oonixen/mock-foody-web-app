@@ -1,0 +1,39 @@
+@import "src/styles/variables";
+
+.ProfileScreen_main__main {
+    display: flex;
+    min-height: calc(100vh - #{$height--profileScreen_header});
+}
+
+.ProfileScreen_main__section {
+    padding-top: px-to-rem(39);
+}
+
+.ProfileScreen_main__leftSection {
+    width: 65%;
+}
+
+.ProfileScreen_main__rightSection {
+    width: 35%;
+    padding-bottom: px-to-rem(32);
+    background-color: $color--lightestGrey;
+}
+
+@media (max-width: $width--tablet) {
+    .ProfileScreen_main__main {
+        min-height: calc(100vh - #{$height--profileScreen_header_small});
+    }
+
+    .ProfileScreen_main__section {
+        padding-top: px-to-rem(16);
+        padding-bottom: px-to-rem(16);
+    }
+
+    .ProfileScreen_main__leftSection {
+        width: 100%;
+    }
+
+    .ProfileScreen_main__rightSection {
+        display: none;
+    }
+}

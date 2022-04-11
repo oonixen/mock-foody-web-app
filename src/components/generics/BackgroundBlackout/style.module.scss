@@ -1,0 +1,46 @@
+@import "src/styles/variables";
+
+$button--width: px-to-rem(40);
+
+.BackgroundBlackout__blackoutBlock {
+    overflow: auto;
+    z-index: 100;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: calc(#{$button--width} + #{px-to-rem(10)});
+    background-color: rgb(0 0 0 / 76%);
+
+    &:after {
+        width: 0;
+        height: 100%;
+        content: "";
+        display: inline-block;
+        vertical-align: middle;
+    }
+}
+
+.BackgroundBlackout__content {
+    display: inline-block;
+    position: relative;
+    cursor: auto;
+    text-align: start;
+    vertical-align: middle;
+}
+
+.BackgroundBlackout__closeButton {
+    position: absolute;
+    right: 0;
+    bottom: calc(100% + #{px-to-rem(10)});
+    width: $button--width;
+}
+
+@media (max-width: $width--tablet) {
+    .BackgroundBlackout__blackoutBlock {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}

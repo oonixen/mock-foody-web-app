@@ -1,0 +1,59 @@
+@import "src/styles/variables";
+
+.OrderProfileScreen_Dish__block {
+  display: grid;
+  grid-template-columns: px-to-rem(113px) auto px-to-rem(50px) px-to-rem(100px);
+  align-items: center;
+  margin-bottom: px-to-rem(14);
+}
+
+.OrderProfileScreen_Dish__imgBlock {
+  width: px-to-rem(93);
+  height: px-to-rem(93);
+  border-radius: px-to-rem(10);
+  margin-right: px-to-rem(20);
+  background-color: $color--purpleMedium;
+}
+
+.OrderProfileScreen_Dish__name {
+  width: 100%;
+  padding-right: px-to-rem(8);
+  font-size: px-to-rem(20);
+  color: $color--dark;
+}
+
+.OrderProfileScreen_Dish__count {
+  font-size: px-to-rem(24);
+  color: $color--purpleMedium;
+}
+
+.OrderProfileScreen_Dish__sum {
+  text-align: right;
+  font-size: px-to-rem(24);
+  color: $color--purpleMedium;
+}
+
+@media (max-width: $width--phone) {
+
+  .OrderProfileScreen_Dish__block {
+    grid-template-columns: px-to-rem(90px) auto px-to-rem(30px) px-to-rem(70px);
+  }
+
+  .OrderProfileScreen_Dish__imgBlock {
+    width: px-to-rem(70);
+    height: px-to-rem(70);
+  }
+
+  .OrderProfileScreen_Dish__name {
+    font-size: px-to-rem(15);
+  }
+
+  .OrderProfileScreen_Dish__count {
+    font-size: px-to-rem(15);
+  }
+
+  .OrderProfileScreen_Dish__sum {
+    text-align: right;
+    font-size: px-to-rem(15);
+  }
+}

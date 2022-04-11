@@ -1,0 +1,70 @@
+@import "../../../styles/functions/pxToRem";
+@import "../../../styles/variables";
+
+.ShowMenuButton__block {
+    position: relative;
+}
+
+.ShowMenuButton__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: px-to-rem(114);
+    height: px-to-rem(40);
+    border: 1px solid $color--darkestGrey;
+    border-radius: px-to-rem(48);
+}
+
+.ShowMenuButton__img {
+}
+
+.ShowMenuButton__span {
+    margin-left: px-to-rem(12);
+    font-size: px-to-rem(18);
+    color: $color--dark;
+}
+
+.ShowMenuButton__nav {
+    z-index: 150;
+    position: absolute;
+    top: 100%;
+    overflow: auto;
+    width: px-to-rem(250);
+    height: px-to-rem(394);
+    background-color: $color--white;
+    padding: px-to-rem(35) px-to-rem(21);
+    border-radius: 0 0 px-to-rem(12) px-to-rem(12);
+
+    &::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background: $color--grey;
+    }
+}
+
+.ShowMenuButton__title {
+    font-family: $font--text-bold;
+    font-size: px-to-rem(20);
+    margin-bottom: px-to-rem(9);
+
+    &:not(:first-child) {
+        margin-top: px-to-rem(18);
+    }
+}
+
+.ShowMenuButton__li {
+}
+
+.ShowMenuButton__a {
+    display: block;
+    color: $color--lightDark;
+    font-size: px-to-rem(15);
+    padding: px-to-rem(9) 0;
+
+    &:hover {
+        color: $color--purpleMedium;
+    }
+}

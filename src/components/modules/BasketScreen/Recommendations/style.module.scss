@@ -1,0 +1,98 @@
+@import "src/styles/variables";
+@import "src/styles/functions/pxToRem";
+
+$dish--height: px-to-rem(96);
+
+.BasketScreen_Recommendation__title {
+    display: block;
+    margin-top: px-to-rem(39);
+    font-size: px-to-rem(24);
+    font-family: $font--text-bold;
+}
+
+.BasketScreen_Recommendation__scrollBlock {
+    display: flex;
+    margin-top: px-to-rem(30);
+    height: $dish--height;
+
+    &:hover {
+        cursor: grabbing;
+    }
+}
+
+@mixin Stub() {
+    z-index: 1;
+    background-color: #ffffff;
+    height: $dish--height;
+    width: 0;
+    box-shadow: 0 1px 20px 19px #ffffff;
+    transition: opacity 0.6s;
+}
+
+.BasketScreen_Recommendation__stubLeft {
+    @include Stub();
+}
+
+.BasketScreen_Recommendation__stubRight {
+    @include Stub();
+}
+
+.BasketScreen_Recommendation__stub_active {
+    opacity: 1;
+}
+
+.BasketScreen_Recommendation__stub_inactive {
+    opacity: 0;
+}
+
+.BasketScreen_Recommendation__scrollContainer {
+    white-space: nowrap;
+    height: $dish--height;
+}
+
+.BasketScreen_Recommendation__dishBlock {
+    display: inline-flex;
+    height: $dish--height;
+    width: px-to-rem(200);
+
+    &:not(:last-child) {
+        margin-right: px-to-rem(31);
+    }
+}
+
+.BasketScreen_Recommendation__img {
+    min-width: $dish--height;
+    height: $dish--height;
+    margin-right: px-to-rem(11);
+    border-radius: px-to-rem(13);
+    background-color: $color--purpleMedium;
+}
+
+.BasketScreen_Recommendation__dishInfoBlock {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-between;
+}
+
+.BasketScreen_Recommendation__name {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    white-space: break-spaces;
+    word-break: break-all;
+    font-size: px-to-rem(16);
+    color: $color--dark;
+}
+
+.BasketScreen_Recommendation__button {
+    padding: px-to-rem(5) px-to-rem(5);
+    font-size: px-to-rem(16);
+}
+
+@media (max-width: $width--tablet) {
+    .BasketScreen_Recommendation__title {
+        margin-top: px-to-rem(25);
+    }
+}

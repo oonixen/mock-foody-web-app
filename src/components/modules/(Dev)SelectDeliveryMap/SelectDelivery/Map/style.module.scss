@@ -1,0 +1,15 @@
+@import "./src/styles/variables";
+
+.pickupPointLabelPopup {
+    top: -50px !important;
+    left: 13px !important;
+}
+
+.pickupPointLabelPopup__content {
+    width: max-content !important;
+    padding: $indent--2xs $indent--3xs !important;
+    border-radius: $radius--sm;
+    background-color: $color--sand;
+    font-weight: bold !important;
+    color: $color--black;
+}

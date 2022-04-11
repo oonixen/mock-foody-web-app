@@ -1,0 +1,55 @@
+@import "src/styles/variables";
+@import "src/styles/functions/pxToRem";
+
+.CodeVerifyScreen_ModalWindow__form {
+    position: relative;
+    width: px-to-rem(685px);
+    padding: 0 px-to-rem(101px);
+    background-color: $color--lightestGrey;
+    border-radius: px-to-rem(32px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.CodeVerifyScreen_ModalWindow__close {
+    position: absolute;
+    top: px-to-rem(27px);
+    right: px-to-rem(30px);
+    width: px-to-rem(26px);
+    height: px-to-rem(26px);
+}
+
+.CodeVerifyScreen_ModalWindow__h2 {
+    margin-top: px-to-rem(67px);
+    font-size: px-to-rem(37px);
+    color: $color--purpleMedium;
+}
+
+.CodeVerifyScreen_ModalWindow__button {
+    width: 100%;
+    margin-top: px-to-rem(52px);
+    padding: px-to-rem(16px) 0;
+    margin-bottom: px-to-rem(50px);
+}
+
+@media (max-width: $width--tablet) {
+    .CodeVerifyScreen_ModalWindow__form {
+        width: px-to-rem(450px);
+        padding: 0 px-to-rem(50px);
+    }
+}
+
+@media (max-width: $width--phone) {
+    .CodeVerifyScreen_ModalWindow__form {
+        width: 95vw;
+    }
+
+    .CodeVerifyScreen_ModalWindow__button {
+        font-size: px-to-rem(15px);
+    }
+
+    .CodeVerifyScreen_ModalWindow__h2 {
+        font-size: px-to-rem(30px);
+    }
+}

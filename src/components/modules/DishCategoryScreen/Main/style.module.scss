@@ -1,0 +1,13 @@
+@import "src/styles/variables";
+
+.DishCategoryScreen_Main__main {
+    margin-top: $height--dishCategoryScreen_big;
+    background-color: white;
+    margin-bottom: px-to-rem(50);
+}
+
+@media (max-width: $width--tablet) {
+    .DishCategoryScreen_Main__main {
+        margin-top: px-to-rem(40);
+    }
+}

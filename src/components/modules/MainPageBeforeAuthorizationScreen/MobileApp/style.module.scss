@@ -1,0 +1,89 @@
+@import "src/styles/variables";
+@import "src/styles/functions/pxToRem";
+
+.MainPageBeforeAuthorizationScreen_MobileApp__section {
+    height: px-to-rem(680px);
+    background-color: $color--lightestGrey;
+    display: flex;
+}
+
+.MainPageBeforeAuthorizationScreen_MobileApp__phonePicBlock {
+    width: 50%;
+    background-repeat: no-repeat;
+    background-size: auto 88%;
+    background-position: bottom;
+}
+
+.MainPageBeforeAuthorizationScreen_MobileApp__sendBlock {
+    width: 50%;
+    max-width: px-to-rem(470px);
+}
+
+.MainPageBeforeAuthorizationScreen_MobileApp__textHeader {
+    margin-top: px-to-rem(161px);
+    font-size: px-to-rem(52px);
+    font-family: $font--text-bold;
+    color: $color--darkest;
+}
+
+.MainPageBeforeAuthorizationScreen_MobileApp__text {
+    margin-top: px-to-rem(64px);
+    margin-bottom: px-to-rem(51px);
+    font-size: px-to-rem(23px);
+    color: $color--dark;
+}
+
+.MainPageBeforeAuthorizationScreen_MobileApp__p {
+    margin-top: px-to-rem(15px);
+    font-size: px-to-rem(13px);
+    color: $color--darkestGrey;
+    margin-left: px-to-rem(15px);
+}
+
+.MainPageBeforeAuthorizationScreen_MobileApp__input {
+    display: block;
+}
+
+@media (max-width: $width--tablet) {
+    .MainPageBeforeAuthorizationScreen_MobileApp__section {
+        height: px-to-rem(600px);
+    }
+
+    .MainPageBeforeAuthorizationScreen_MobileApp__phonePicBlock {
+        display: none;
+    }
+
+    .MainPageBeforeAuthorizationScreen_MobileApp__sendBlock {
+        width: 100%;
+        padding-left: px-to-rem(40);
+    }
+
+    .MainPageBeforeAuthorizationScreen_MobileApp__textHeader {
+        margin-top: px-to-rem(50px);
+        font-size: px-to-rem(45px);
+    }
+
+    .MainPageBeforeAuthorizationScreen_MobileApp__text {
+        margin-top: px-to-rem(40px);
+    }
+
+    .MainPageBeforeAuthorizationScreen_MobileApp__input {
+        width: px-to-rem(320) !important;
+    }
+}
+
+@media (max-width: $width--phone) {
+    .MainPageBeforeAuthorizationScreen_Input__input {
+        width: px-to-rem(250px) !important;
+        height: px-to-rem(50px) !important;
+        font-size: px-to-rem(13px) !important;
+    }
+
+    .MainPageBeforeAuthorizationScreen_MobileApp__textHeader {
+        font-size: px-to-rem(40px);
+    }
+
+    .MainPageBeforeAuthorizationScreen_MobileApp__text {
+        font-size: px-to-rem(20px);
+    }
+}

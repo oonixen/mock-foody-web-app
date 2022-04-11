@@ -1,0 +1,47 @@
+@import "src/styles/variables";
+
+.MainUserInfoSection__infoBlock {
+    display: flex;
+    justify-content: space-between;
+}
+
+.MainUserInfoSection__nameAndPhoneBlock {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    margin-right: px-to-rem(8);
+}
+
+.MainUserInfoSection__nameAndPenBlock {
+    display: flex;
+}
+
+.MainUserInfoSection__name {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-right: px-to-rem(8);
+    color: $color--purpleMedium;
+    font-family: $font--text-bold;
+    font-size: px-to-rem(35);
+}
+
+.MainUserInfoSection__pen {
+    display: none;
+    width: px-to-rem(25);
+}
+
+.MainUserInfoSection__phone {
+    color: $color--lightDark;
+    font-size: px-to-rem(20);
+}
+
+.MainUserInfoSection__avatar {
+    height: px-to-rem(65);
+}
+
+@media (max-width: $width--tablet) {
+    .MainUserInfoSection__pen {
+        display: block;
+    }
+}

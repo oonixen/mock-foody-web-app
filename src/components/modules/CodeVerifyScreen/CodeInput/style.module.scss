@@ -1,0 +1,37 @@
+@import "src/styles/variables";
+@import "src/styles/functions/pxToRem";
+
+.CodeVerifyScreen_CodeInput__block {
+    display: flex;
+    margin-top: px-to-rem(70px);
+}
+
+.CodeVerifyScreen_CodeInput__input {
+    width: px-to-rem(86px);
+    height: px-to-rem(77px);
+    background-color: inherit;
+    border: 1px solid $color--darkestGrey;
+    border-radius: px-to-rem(22px);
+    font-size: px-to-rem(41px);
+    text-align: center;
+
+    &:not(:last-child) {
+        margin-right: px-to-rem(22px);
+    }
+}
+
+@media (max-width: $width--tablet) {
+    .CodeVerifyScreen_CodeInput__input {
+        width: px-to-rem(66px);
+        height: px-to-rem(57px);
+    }
+}
+
+@media (max-width: $width--phone) {
+    .CodeVerifyScreen_CodeInput__input {
+        width: px-to-rem(50px);
+        height: px-to-rem(45px);
+        font-size: px-to-rem(25px);
+        border-radius: px-to-rem(14px);
+    }
+}

@@ -1,0 +1,37 @@
+@import "src/styles/variables";
+@import "src/styles/functions/pxToRem";
+
+.MainPageBeforeAuthorizationScreen_Input__div {
+    position: relative;
+    width: fit-content;
+}
+
+.MainPageBeforeAuthorizationScreen_Input__buttonBlock {
+    position: absolute;
+    right: px-to-rem(10px);
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+}
+
+.MainPageBeforeAuthorizationScreen_Input__button {
+    font-size: px-to-rem(19);
+    font-weight: bold;
+}
+
+.MainPageBeforeAuthorizationScreen_Input__input {
+    z-index: 1;
+    font-size: px-to-rem(19);
+    border-radius: px-to-rem(41px);
+    background-color: $color--white;
+    width: px-to-rem(403px);
+    height: px-to-rem(58px);
+    padding: px-to-rem(16px) px-to-rem(28px);
+}
+
+@media (max-width: $width--phone) {
+    .MainPageBeforeAuthorizationScreen_Input__button {
+        font-size: px-to-rem(10px);
+    }
+}

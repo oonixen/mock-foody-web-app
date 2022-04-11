@@ -1,0 +1,16 @@
+@use "sass:math";
+
+$base-font-size: 16;
+
+@function strip-unit($number) {
+    @if type-of($number) == "number" and not unitless($number) {
+        @return math.div($number, ($number * 0 + 1));
+    }
+
+    @return $number;
+}
+
+@function px-to-rem($size) {
+    $pxUnitLess: strip-unit($size);
+    @return #{math.div($pxUnitLess, $base-font-size)}rem;
+}

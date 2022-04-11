@@ -1,0 +1,92 @@
+@import "src/styles/variables";
+@import "src/styles/functions/pxToRem";
+
+.SendCodeScreen_ModalWindow__form {
+    position: relative;
+    max-width: px-to-rem(685px);
+    padding: 0 px-to-rem(101px);
+    background-color: $color--lightestGrey;
+    border-radius: px-to-rem(32px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.SendCodeScreen_ModalWindow__closeButton {
+    position: absolute;
+    top: px-to-rem(27px);
+    right: px-to-rem(30px);
+}
+
+.SendCodeScreen_ModalWindow__close {
+    width: px-to-rem(26px);
+    height: px-to-rem(26px);
+}
+
+.SendCodeScreen_ModalWindow__h2 {
+    margin-top: px-to-rem(67px);
+    font-size: px-to-rem(37px);
+    color: $color--purpleMedium;
+    text-align: center;
+}
+
+.SendCodeScreen_ModalWindow__input {
+    margin-top: px-to-rem(70px);
+    font-size: px-to-rem(41px);
+    max-width: px-to-rem(454px);
+}
+
+.SendCodeScreen_ModalWindow__button {
+    margin-top: px-to-rem(57px);
+    font-size: px-to-rem(25px);
+    width: 100%;
+    padding: px-to-rem(16px) 0!important;
+}
+
+.SendCodeScreen_ModalWindow__checkboxContainer {
+    margin-top: px-to-rem(42px);
+    margin-bottom: px-to-rem(39px);
+}
+
+.SendCodeScreen_ModalWindow__attentionText {
+    font-size: px-to-rem(18px);
+    color: $color--lightDark;
+}
+
+.SendCodeScreen_ModalWindow__a {
+    text-decoration: underline;
+}
+
+@media (max-width: $width--tablet) {
+    .SendCodeScreen_ModalWindow__form {
+        max-width: px-to-rem(500px);
+        padding: 0 px-to-rem(50px);
+    }
+
+    .SendCodeScreen_ModalWindow__input {
+        width: 100%;
+    }
+}
+
+@media (max-width: $width--phone) {
+    .SendCodeScreen_ModalWindow__form {
+        max-width: 95vw;
+        padding: 0 px-to-rem(30px);
+    }
+
+    .SendCodeScreen_ModalWindow__h2 {
+        font-size: px-to-rem(30px);
+    }
+
+    .SendCodeScreen_ModalWindow__input {
+        font-size: px-to-rem(30px);
+    }
+
+    .SendCodeScreen_ModalWindow__button {
+        padding: px-to-rem(15px) 0;
+    }
+
+    .SendCodeScreen_ModalWindow__attentionText {
+        font-size: px-to-rem(15px);
+    }
+}

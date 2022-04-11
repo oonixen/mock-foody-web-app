@@ -1,0 +1,73 @@
+@import "src/styles/variables";
+@import "src/styles/functions/pxToRem";
+
+.Footer__footer {
+    padding: px-to-rem(30) px-to-rem(78px);
+    background-color: $color--lightGrey;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.Footer__firstBlock {
+    display: block;
+}
+
+.Footer__secondBlock {
+    display: block;
+}
+
+.Footer__text {
+    color: $color--dark;
+    font-size: px-to-rem(18px);
+}
+
+.Footer__a {
+    display: inline-block;
+}
+
+.Footer__a_first {
+    margin-right: px-to-rem(30px);
+}
+
+.Footer__img {
+    display: inline-block;
+    margin-right: 8px;
+}
+
+.Footer__img_vk {
+    width: px-to-rem(24px);
+    height: px-to-rem(14px);
+}
+
+.Footer__img_instagram {
+    width: px-to-rem(17.4px);
+    height: px-to-rem(17.4px);
+}
+
+@media (max-width: $width--tablet) {
+    .Footer__footer {
+        flex-direction: column;
+        padding: px-to-rem(30) px-to-rem(60px);
+    }
+
+    .Footer__firstBlock {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .Footer__secondBlock {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .Footer__a_first {
+        margin-right: 0;
+    }
+
+    .Footer__a {
+        margin-top: px-to-rem(10);
+    }
+}

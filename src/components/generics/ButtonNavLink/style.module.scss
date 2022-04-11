@@ -1,0 +1,21 @@
+@import "src/styles/variables";
+
+.ButtonNavLink__navLink {
+  cursor: pointer;
+  height: fit-content;
+  padding: px-to-rem(7) px-to-rem(31);
+  border-radius: px-to-rem(52);
+  transition: background-color 0.2s ease-in-out;
+  font-size: px-to-rem(23);
+}
+
+.ButtonNavLink__navLink_purpleMedium {
+  border: 1px solid $color--purpleMedium;
+  background-color: $color--purpleMedium;
+  color: $color--white;
+
+  &:hover {
+    background-color: inherit;
+    color: $color--purpleMedium;
+  }
+}

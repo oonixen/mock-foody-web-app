@@ -1,0 +1,31 @@
+@import "src/styles/variables";
+@import "src/styles/functions/pxToRem";
+
+.RootNavigation_BottomBasketButton__button {
+    display: none;
+    z-index: 1;
+    position: fixed;
+    bottom: px-to-rem(32);
+    right: px-to-rem(16);
+    background-color: $color--purpleMedium;
+    color: $color--white;
+    border-radius: px-to-rem(50);
+    padding: px-to-rem(8) px-to-rem(25);
+    text-align: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
+}
+
+.RootNavigation_BottomBasketButton__sum {
+    font-size: px-to-rem(18);
+}
+
+.RootNavigation_BottomBasketButton__count {
+    font-size: px-to-rem(12);
+    color: $color--grey;
+}
+
+@media (max-width: $width--tablet) {
+    .RootNavigation_BottomBasketButton__button {
+        display: block;
+    }
+}

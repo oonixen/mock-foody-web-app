@@ -1,0 +1,82 @@
+@import "src/styles/variables";
+@import "src/styles/functions/pxToRem";
+
+.BasketScreen_Header__header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: $height--basketScreen_header_big;
+    border-bottom: 2px solid $color--lightGrey;
+    background-color: $color--white;
+}
+
+.BasketScreen_Header__leftBlockCombine {
+    display: flex;
+    align-items: center;
+}
+
+.BasketScreen_Header__h1 {
+    font-size: px-to-rem(35);
+    font-family: $font--text-bold;
+    margin-right: px-to-rem(28);
+}
+
+.BasketScreen_Header__buttonBin {
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: px-to-rem(4) px-to-rem(17);
+    background-color: $color--purpleMedium;
+    border-radius: px-to-rem(22);
+}
+
+.BasketScreen_Header__binImg {
+    height: px-to-rem(25);
+}
+
+.BasketScreen_Header__buttonBack {
+    display: flex;
+    padding: px-to-rem(13) px-to-rem(22);
+    background-color: $color--purpleMedium;
+    border-radius: px-to-rem(22);
+    color: white;
+    font-size: px-to-rem(16);
+}
+
+.BasketScreen_Header__arrow {
+    height: px-to-rem(18);
+    margin-right: px-to-rem(13);
+    transform: rotate(180deg);
+}
+
+@media (max-width: $width--phone) {
+    .BasketScreen_Header__header {
+        height: $height--basketScreen_header_small;
+        padding-top: px-to-rem(16);
+        padding-bottom: px-to-rem(16);
+    }
+
+    .BasketScreen_Header__h1 {
+        font-size: px-to-rem(20);
+        margin-right: px-to-rem(10);
+    }
+
+    .BasketScreen_Header__binImg {
+        height: px-to-rem(15);
+    }
+
+    .BasketScreen_Header__buttonBack {
+        font-size: px-to-rem(12);
+        padding: px-to-rem(10) px-to-rem(15);
+    }
+
+    .BasketScreen_Header__arrow {
+        height: px-to-rem(15);
+        margin-right: px-to-rem(10);
+    }
+}

@@ -1,0 +1,62 @@
+@import "src/styles/functions/pxToRem";
+@import "src/styles/variables";
+
+$dishButton--height: px-to-rem(28);
+
+.DishCategory_Story__h4 {
+    margin-top: px-to-rem(19);
+    font-size: px-to-rem(24);
+}
+
+.DishCategory_Story__h4_hide {
+    display: block;
+}
+
+.DishCategory_Story__blockRec {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: px-to-rem(10px);
+    grid-row-gap: px-to-rem(30px);
+    margin-top: px-to-rem(15);
+}
+
+.DishCategory_Story__dish {
+    position: relative;
+    width: 100%;
+}
+
+.DishCategory_Story__img {
+    width: 100%;
+    aspect-ratio: 0.9;
+    background-color: $color--purpleMedium;
+    border-radius: px-to-rem(13);
+}
+
+.DishCategory_Story__dishName {
+    margin-top: px-to-rem(9);
+    margin-bottom: calc(#{$dishButton--height} + #{px-to-rem(9)});
+    font-size: px-to-rem(13);
+    color: $color--dark;
+}
+
+.DishCategory_Story__dishButton {
+    position: absolute;
+    bottom: 0;
+    font-size: px-to-rem(11);
+    padding: px-to-rem(6) px-to-rem(12);
+}
+
+@media (max-width: $width--phone) {
+    .DishCategory_Story__h4_hide {
+        display: none;
+    }
+
+    .DishCategory_Story__blockRec {
+        margin-top: px-to-rem(32);
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .DishCategory_Story__arrow_img {
+        width: px-to-rem(15);
+    }
+}

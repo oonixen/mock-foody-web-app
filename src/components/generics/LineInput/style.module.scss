@@ -1,0 +1,11 @@
+@import "src/styles/variables";
+@import "src/styles/functions/pxToRem";
+
+.LineInput__input {
+    border-bottom: px-to-rem(2px) solid $color--darkestGrey;
+    background-color: inherit;
+
+    &:focus-visible {
+        outline: none;
+    }
+}

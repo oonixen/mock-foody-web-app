@@ -1,0 +1,105 @@
+@import "src/styles/functions/pxToRem";
+@import "src/styles/variables";
+
+.MainPageBeforeAuthorizationScreen_Map__section {
+    display: flex;
+}
+
+.MainPageBeforeAuthorizationScreen_Map__mapSection {
+    height: px-to-rem(571.61px);
+    width: 55%;
+}
+
+.MainPageBeforeAuthorizationScreen_Map__checkDeliveryZoneSection {
+    height: px-to-rem(571.61px);
+    width: 45%;
+    background-color: $color--purpleMedium;
+    padding-left: px-to-rem(82.52px);
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: auto px-to-rem(571.61px);
+}
+
+.MainPageBeforeAuthorizationScreen_Map__p {
+    z-index: 1;
+    color: $color--white;
+    font-family: $font--text-bold;
+    font-size: px-to-rem(46.55px);
+    margin: px-to-rem(57px) 0 px-to-rem(81px);
+    max-width: px-to-rem(375.23px);
+    line-height: px-to-rem(48.88px);
+}
+
+.MainPageBeforeAuthorizationScreen_Map__inputSection {
+    position: relative;
+    width: fit-content;
+}
+
+.MainPageBeforeAuthorizationScreen_Map__input {
+    font-size: px-to-rem(19.2394px);
+    border-radius: px-to-rem(41px);
+    background-color: $color--white;
+    width: px-to-rem(403px);
+    height: px-to-rem(58px);
+    padding: px-to-rem(16px) px-to-rem(28px);
+}
+
+.MainPageBeforeAuthorizationScreen_Map__buttonBlock {
+    position: absolute;
+    right: px-to-rem(10px);
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+}
+
+.MainPageBeforeAuthorizationScreen_Map__button {
+    font-weight: bold;
+}
+
+.MainPageBeforeAuthorizationScreen_Map__suggestion_top {
+    font-size: px-to-rem(20px);
+    color: $color--purpleMedium;
+}
+
+.MainPageBeforeAuthorizationScreen_Map__suggestion_bottom {
+    font-size: px-to-rem(15px);
+    color: $color--lightDark;
+}
+
+@media (max-width: $width--laptop) {
+    .MainPageBeforeAuthorizationScreen_Map__input {
+        width: px-to-rem(300);
+    }
+}
+
+@media (max-width: $width--tablet) {
+    .MainPageBeforeAuthorizationScreen_Map__section {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .MainPageBeforeAuthorizationScreen_Map__mapSection {
+        width: 100%;
+    }
+
+    .MainPageBeforeAuthorizationScreen_Map__checkDeliveryZoneSection {
+        width: 100%;
+    }
+}
+
+@media (max-width: $width--phone) {
+    .MainPageBeforeAuthorizationScreen_Map__checkDeliveryZoneSection {
+        padding-left: px-to-rem(40);
+    }
+
+    .MainPageBeforeAuthorizationScreen_Map__input {
+        height: px-to-rem(50px);
+        width: px-to-rem(250px);
+        font-size: px-to-rem(15);
+    }
+
+    .MainPageBeforeAuthorizationScreen_Map__p {
+        font-size: px-to-rem(35px);
+    }
+}

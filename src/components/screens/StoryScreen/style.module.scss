@@ -1,0 +1,116 @@
+@import "../../../styles/functions/pxToRem";
+@import "../../../styles/variables";
+
+@function getArrowHorizonPosition($indent) {
+    @return calc(#{px-to-rem($indent)} + 100%);
+}
+
+.StoryScreen__section_parent {
+    position: relative;
+}
+
+.StoryScreen__section {
+    width: px-to-rem(450);
+    height: 85vh;
+    background-color: $color--white;
+    border-radius: px-to-rem(32);
+    overflow: auto;
+}
+
+.StoryScreen__closeButton_button {
+    position: absolute;
+    top: px-to-rem(18);
+    right: px-to-rem(22);
+    background-color: transparent;
+}
+
+.StoryScreen__closeButton_img {
+    width: px-to-rem(23);
+    height: px-to-rem(23);
+}
+
+.StoryScreen__arrow {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    height: fit-content;
+    margin: auto;
+}
+
+.StoryScreen__arrow_right {
+    left: getArrowHorizonPosition(146);
+}
+
+.StoryScreen__arrow_left {
+    right: getArrowHorizonPosition(146);
+    transform: rotate(180deg);
+}
+
+.StoryScreen__arrow_img {
+    width: px-to-rem(24);
+}
+
+.StoryScreen__bannerBlock {
+    width: 100%;
+    aspect-ratio: 2.4;
+    background-color: #8253dd;
+}
+
+.StoryScreen__contentBlock {
+    padding: px-to-rem(32) px-to-rem(41);
+}
+
+.StoryScreen__h3 {
+    font-size: px-to-rem(30);
+}
+
+.StoryScreen__p {
+    margin-top: px-to-rem(19);
+    font-size: px-to-rem(18);
+}
+
+.StoryScreen__date {
+    margin-top: px-to-rem(19);
+    font-size: px-to-rem(18);
+    color: $color--purpleMedium;
+}
+
+@media (max-width: $width--tablet) {
+    .StoryScreen__arrow_right {
+        left: getArrowHorizonPosition(20);
+    }
+
+    .StoryScreen__arrow_left {
+        right: getArrowHorizonPosition(20);
+    }
+}
+
+@media (max-width: $width--phone) {
+    .StoryScreen__contentBlock {
+        padding: px-to-rem(12) px-to-rem(12) px-to-rem(24);
+    }
+
+    .StoryScreen__section {
+        width: 80vw;
+    }
+
+    .StoryScreen__arrow_right {
+        left: getArrowHorizonPosition(5);
+    }
+
+    .StoryScreen__arrow_left {
+        right: getArrowHorizonPosition(5);
+    }
+
+    .StoryScreen__h3 {
+        font-size: px-to-rem(24);
+    }
+
+    .StoryScreen__p {
+        font-size: px-to-rem(16);
+    }
+
+    .StoryScreen__date {
+        font-size: px-to-rem(16);
+    }
+}

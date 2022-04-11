@@ -1,0 +1,42 @@
+@import "src/styles/variables";
+
+.OrdersProfileScreen_OrderNavLink__navLink {
+  max-width: px-to-rem(500);
+  display: flex;
+  justify-content: space-between;
+  padding: px-to-rem(18) 0;
+  border-bottom: 1px solid $color--darkGrey;
+}
+
+.OrdersProfileScreen_OrderNavLink__leftBlock {
+  display: flex;
+  flex-direction: column;
+  margin-right: px-to-rem(8);
+}
+
+.OrdersProfileScreen_OrderNavLink__orderNum {
+  font-size: px-to-rem(22);
+  color: $color--black;
+}
+
+.OrdersProfileScreen_OrderNavLink__orderDate {
+  font-size: px-to-rem(15);
+  color: $color--lightDark;
+}
+
+.OrdersProfileScreen_OrderNavLink__rightBlock {
+  display: flex;
+  align-items: center;
+}
+
+.OrdersProfileScreen_OrderNavLink__orderSum {
+  width: px-to-rem(89);
+  height: fit-content;
+  text-align: center;
+  margin-right: px-to-rem(12);
+  padding: px-to-rem(5) px-to-rem(12);
+  font-size: px-to-rem(16);
+  color: $color--black;
+  background-color: $color--grey;
+  border-radius: px-to-rem(7);
+}
